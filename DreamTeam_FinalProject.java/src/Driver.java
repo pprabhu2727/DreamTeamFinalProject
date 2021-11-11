@@ -13,15 +13,13 @@ public class Driver {
 		String file = "userStrings.txt";
 		Scanner keyboard = new Scanner(System.in);
 		FileWriter fw = new FileWriter(file);
-		StringTokenizer tokenizer;
-		PrintWriter out;
 		String name;
 		String Email;
 		String Address;
 		String Username;
 		String Password;
 		long PhoneNumber;
-		BufferedReader in;
+	
 	
 
 	  	System.out.print("What is your name? ");
@@ -54,6 +52,8 @@ public class Driver {
 						
 						
 	         System.out.println("Your phone number is " + user.getPhone());
+		
+		 System.out.println("Your email is " + user.getEmail());
 	         
 	}
 	         
