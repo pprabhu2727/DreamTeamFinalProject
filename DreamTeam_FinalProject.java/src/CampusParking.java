@@ -23,7 +23,6 @@ public class CampusParking {
 		for (int i = 0; i < NUM_GARAGES; i++) {
 			garages[i] = new ParkingGarage(i, FLOORS_PER_GARAGE, SLOTS_PER_FLOOR);
 		}
-		
 		exists = true;
 	}
 	
