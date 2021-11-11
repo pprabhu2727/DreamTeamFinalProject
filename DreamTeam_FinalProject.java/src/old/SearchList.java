@@ -1,5 +1,5 @@
+package old;
 import java.util.ArrayList;
-import initialization.*;
 import java.util.Iterator;
 
 /*Uses an Iterator. This static class searches available slots and returns an ArrayList. A garage number MUST be inputed to search, but floor can be left empty. */

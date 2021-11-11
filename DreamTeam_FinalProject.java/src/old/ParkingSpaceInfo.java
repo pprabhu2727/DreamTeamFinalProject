@@ -1,4 +1,4 @@
-package initialization;
+package old;
 
 /*  This class combines Garage number, Floor number, and numbers of parking spaces per floor. 
   This is used to help create a list of available parking spaces */
