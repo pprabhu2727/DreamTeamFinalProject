@@ -4,8 +4,9 @@ public class ParkingSlot{
 	private int slotNumber;
 	
 	
-	public ParkingSlot() {
-		
+	public ParkingSlot(int slotNumber) {
+		this.slotNumber=slotNumber;
+		this.isAvailable=true;
 	}
 	
 	public boolean getAvailability() {
@@ -14,5 +15,9 @@ public class ParkingSlot{
 	
 	public int getSlotNumber() {
 		return this.slotNumber;
+	}
+	
+	public void changeAvailability() {
+		this.isAvailable = !this.isAvailable;
 	}
 }
