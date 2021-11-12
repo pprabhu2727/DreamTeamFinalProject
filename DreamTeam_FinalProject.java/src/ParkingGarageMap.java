@@ -1,6 +1,9 @@
 
 public class ParkingGarageMap {
 	
+	// just a basic map that prints to console
+	// doesn't interact with any other classes yet
+	
 	// 10 x 10 grid with 48 spaces, 2 stairs, 1 elevator
 	char map[][] = { 
 			{ '@', '*', 'A', 'A', 'A', 'A', 'A', 'A', '*', 'E' },
