@@ -14,7 +14,7 @@ public class ParkingGarage{
 	private void createFloors(int numberOfFloors, int numberOfSlotsOnEachFloor ) {
 		
 		ArrayList<GarageFloor> floorList= new ArrayList<GarageFloor>();
-		for(int i=1; i<=numberOfFloors; i++) {
+		for(int i=2; i<=numberOfFloors; i++) {
 			floorList.add(new GarageFloor(i,numberOfSlotsOnEachFloor));
 		}
 		this.floors=floorList;
