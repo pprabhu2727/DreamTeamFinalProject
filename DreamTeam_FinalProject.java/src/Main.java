@@ -6,7 +6,8 @@ import old.CreateParkingList;
 public class Main {
 
 	public static void main(String[] args) {
-
-
+		CampusParking.createInstance();
+		
+		
 	}
 }

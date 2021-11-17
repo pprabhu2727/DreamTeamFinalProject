@@ -14,7 +14,7 @@ public class CampusParking {
 	private static final int FLOORS_PER_GARAGE = 6;
 	private static final int SLOTS_PER_FLOOR = 30;
 	
-	private ParkingGarage[] garages = new ParkingGarage[NUM_GARAGES];
+	private static ParkingGarage[] garages = new ParkingGarage[NUM_GARAGES];
 	
 	/*
 	 * Can't directly create campus parking.
@@ -34,6 +34,21 @@ public class CampusParking {
 		
 		return instance;
 	}
+	
+	public static ParkingGarage[] getGarageList() {
+		return garages;
+	}
+	public static int getNUM_GARAGES() {
+		return NUM_GARAGES;
+	}
+	public static int getFLOORS_PER_GARAGE() {
+		return FLOORS_PER_GARAGE;
+	}
+	public static int getSLOTS_PER_FLOOR() {
+		return SLOTS_PER_FLOOR;
+	}
+	
+	
 	
 	/*
 	 * Displays textual representation of all garages, their floors, and each slot.

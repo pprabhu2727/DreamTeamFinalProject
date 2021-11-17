@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class ParkingGarageMap {
 	
@@ -17,6 +18,14 @@ public class ParkingGarageMap {
 			{ '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
 			{ '*', '*', 'A', 'A', 'A', 'A', 'A', 'A', '*', '@' },
 			};
+	
+	/*Thinking about creating an array of 2d maps for each floor below*/
+	public void createMaps() {
+		HashMap<String, char[][]> garageMaps = new HashMap<String, char[][]>();  //Key format is "#:#" where you have GarageNumber:FloorNumber
+		//TODO: Create a loop that creates a new 2d char for each garage and floor
+	}
+	
+	
 	
 	public void print() {
 		
