@@ -2,10 +2,12 @@ import java.util.ArrayList;
 
 public class GarageFloor{
 	private int floorLevel;
+	private int numOfSlots;
 	private ArrayList<ParkingSlot> slots;
 	
 	public GarageFloor(int floorLevel, int numberOfSlotsOnEachFloor) {
 		this.floorLevel=floorLevel;
+		this.numOfSlots=numberOfSlotsOnEachFloor;
 		createSlots(numberOfSlotsOnEachFloor);
 	}
 	
@@ -19,6 +21,9 @@ public class GarageFloor{
 	
 	public int getFloor() {
 		return this.floorLevel;
+	}
+	public int getNumberOfSlots() {
+		return this.numOfSlots;
 	}
 	public ArrayList<ParkingSlot> getSlots(){
 		return this.slots;

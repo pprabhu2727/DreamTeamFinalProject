@@ -22,10 +22,15 @@ public class ParkingGarageMap {
 	/*Thinking about creating an array of 2d maps for each floor below*/
 	public void createMaps() {
 		HashMap<String, char[][]> garageMaps = new HashMap<String, char[][]>();  //Key format is "#:#" where you have GarageNumber:FloorNumber
+		ArrayList<ParkingGarage> garageList = CampusParking.getGarageList();
 		
-		for(int i=0; i<CampusParking.getGarageList().size(); i++) {
-			
+		for(int i=1; i<=garageList.size(); i++) {
+			for(int j=1; j<=garageList.get(0).getNumberOfFloors();j++) {
+				String key = i + ":" + j;
+				garageMaps.put(key, new char[j][garageList.get(0).getFloorList().get(0).getNumberOfSlots()]);
+			}
 		}
+		//TODO: Use the ParkingSlot class to fill in the 2d char arrays for each floor. 
 
 	}
 	

@@ -40,15 +40,7 @@ public class CampusParking {
 	public static ArrayList<ParkingGarage> getGarageList() {
 		return garageList;
 	}
-	public static int getNUM_GARAGES() {
-		return NUM_GARAGES;
-	}
-	public static int getFLOORS_PER_GARAGE() {
-		return FLOORS_PER_GARAGE;
-	}
-	public static int getSLOTS_PER_FLOOR() {
-		return SLOTS_PER_FLOOR;
-	}
+
 	
 	
 	
