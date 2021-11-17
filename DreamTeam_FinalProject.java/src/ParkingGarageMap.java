@@ -22,7 +22,11 @@ public class ParkingGarageMap {
 	/*Thinking about creating an array of 2d maps for each floor below*/
 	public void createMaps() {
 		HashMap<String, char[][]> garageMaps = new HashMap<String, char[][]>();  //Key format is "#:#" where you have GarageNumber:FloorNumber
-		//TODO: Create a loop that creates a new 2d char for each garage and floor
+		
+		for(int i=0; i<CampusParking.getGarageList().size(); i++) {
+			
+		}
+
 	}
 	
 	

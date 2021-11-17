@@ -14,14 +14,16 @@ public class CampusParking {
 	private static final int FLOORS_PER_GARAGE = 6;
 	private static final int SLOTS_PER_FLOOR = 30;
 	
-	private static ParkingGarage[] garages = new ParkingGarage[NUM_GARAGES];
+	//private static ParkingGarage[] garages = new ParkingGarage[NUM_GARAGES];
+	private static ArrayList<ParkingGarage> garageList = new ArrayList<ParkingGarage>(); //Creating an arrayList version for use in Map class
 	
 	/*
 	 * Can't directly create campus parking.
 	 */
 	private CampusParking() {
-		for (int i = 0; i < NUM_GARAGES; i++) {
-			garages[i] = new ParkingGarage(i, FLOORS_PER_GARAGE, SLOTS_PER_FLOOR);
+		for (int i = 1; i <= NUM_GARAGES; i++) {
+			//garages[i] = new ParkingGarage(i, FLOORS_PER_GARAGE, SLOTS_PER_FLOOR);
+			garageList.add(new ParkingGarage(i, FLOORS_PER_GARAGE, SLOTS_PER_FLOOR));
 		}
 		exists = true;
 	}
@@ -35,8 +37,8 @@ public class CampusParking {
 		return instance;
 	}
 	
-	public static ParkingGarage[] getGarageList() {
-		return garages;
+	public static ArrayList<ParkingGarage> getGarageList() {
+		return garageList;
 	}
 	public static int getNUM_GARAGES() {
 		return NUM_GARAGES;
@@ -53,24 +55,25 @@ public class CampusParking {
 	/*
 	 * Displays textual representation of all garages, their floors, and each slot.
 	 */
-	public void printAll() {
-		// Loop 1 prints garage num (no indent)
-		for (int i = 0; i < garages.length; i++) {
-			System.out.println("Garage #: " + garages[i].getGarageNumber());
-			ArrayList<GarageFloor> floors = garages[i].getFloorList();
-			
-			// Loop 2 prints floor num (indented once)
-			for (int j = 0; j < floors.size(); j++) {
-				System.out.println("\tFloor #: " + floors.get(j).getFloor());
-				ArrayList<ParkingSlot> slots = floors.get(j).getSlots();
-				
-				// Loop 3 prints slot num (indented twice)
-				for (int k = 0; k < slots.size(); k++) {
-					System.out.println("\t\tSlot #: " + slots.get(k).getSlotNumber());
-				}
-			}
-		}
-		
-	}
+
+//	public void printAll() {
+//		// Loop 1 prints garage num (no indent)
+//		for (int i = 0; i < garages.length; i++) {
+//			System.out.println("Garage #: " + garages[i].getGarageNumber());
+//			ArrayList<GarageFloor> floors = garages[i].getFloorList();
+//			
+//			// Loop 2 prints floor num (indented once)
+//			for (int j = 0; j < floors.size(); j++) {
+//				System.out.println("\tFloor #: " + floors.get(j).getFloor());
+//				ArrayList<ParkingSlot> slots = floors.get(j).getSlots();
+//				
+//				// Loop 3 prints slot num (indented twice)
+//				for (int k = 0; k < slots.size(); k++) {
+//					System.out.println("\t\tSlot #: " + slots.get(k).getSlotNumber());
+//				}
+//			}
+//		}
+//		
+//	}
 	
 }
