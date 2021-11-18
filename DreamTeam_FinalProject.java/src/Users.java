@@ -1,15 +1,10 @@
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.lang.StackWalker.Option;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 
@@ -33,7 +28,7 @@ public class Users{
 	}
 
 	public Users() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	//Getters and Setters
 	public void setName(String name) {
@@ -94,7 +89,7 @@ public class Users{
         
         // Add users to the list
         listOfUsers.add(new Users("Rayman", "email@email.com","Address","ThandiR","password","9166666666"));
-		listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","password","9166666666"));
+		listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","Pass","9166666666"));
      
       
       
@@ -178,6 +173,7 @@ public class Users{
 
 }
 		}while(option !=4);
+		s.close();
 	}
 }
 
