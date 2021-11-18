@@ -21,7 +21,7 @@ public class Users{
 	private String Username;
 	private String Password;
 	private String PhoneNumber;
-	HashMap <String,String> Login = new HashMap<String,String>();
+	
 	public Users(String name, String Email, String Address, String Username, String Password, String PhoneNumber) {
 		this.name = name;
 		this.Email = Email;
@@ -31,10 +31,7 @@ public class Users{
 		this.PhoneNumber = PhoneNumber;
 	
 	}
-	public Users(String Username, String Password){
-		this.Username = Username;
-		this.Password = Password;
-	}
+
 	public Users() {
 		// TODO Auto-generated constructor stub
 	}
@@ -97,8 +94,8 @@ public class Users{
         
         // Add users to the list
         listOfUsers.add(new Users("Rayman", "email@email.com","Address","ThandiR","password","9166666666"));
-        listOfUsers.add(new Users("Test","Password"));
-        listOfUsers.add(new Users("Rayman","Thandi"));
+		listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","password","9166666666"));
+     
       
       
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
