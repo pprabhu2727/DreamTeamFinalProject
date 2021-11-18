@@ -33,7 +33,7 @@ public class Reservation {
 			System.out.println("Spot is currently filled by, " + spotName);			//loop back?
 		}
 	}
-	
+	/*test*/
 	
 	@SuppressWarnings("unused")	//I have no clue affects spotNumber
 	public void reserveSpot() throws IOException{
