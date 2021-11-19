@@ -32,17 +32,23 @@ public class Main {
 			userSelection = in.next().charAt(0);
 			
 			switch(userSelection) {
-			case 'M':
+			case 'M': 
+			case 'm':
 				// TODO: add map printing
-				System.out.println("Loading map...");
+				// System.out.println("Loading map...");
+				ParkingGarageMap map = new ParkingGarageMap();
+				map.print();
+				System.out.println();
 				break;
 			
 			case 'R':
+			case 'r':
 				// TODO: add reservation functionality 
 				System.out.println("Reserving...");
 				break;
 				
 			case 'Q':
+			case 'q':
 				isQuit = true;
 				break;
 				
