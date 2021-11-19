@@ -49,6 +49,7 @@ public class LoginManager {
 		
 		        // Iterate through list of users to see if we have a match
 		        Iterator<Users> iterator = listOfUsers.iterator();
+				
 		        for (Users user : listOfUsers)
 		        {
 		     
@@ -67,6 +68,8 @@ public class LoginManager {
 		        if (loggedInUser != null)
 		        {
 		            System.out.println("User successfully logged in: "+loggedInUser.getName());
+
+					
 		        }
 		        else
 		        {
@@ -80,28 +83,34 @@ public class LoginManager {
 						String Name = scanner.nextLine();
 						users.setName(Name);
 			
-						System.out.print(" Enter userName ");
+						System.out.print(" Enter Email: ");
+						String email = scanner.nextLine();
+						users.setEmail(email);
+			
+						System.out.print(" Enter Username: ");
 						username = scanner.nextLine();
 						users.setUsername(username);
 			
-						System.out.print(" Enter password => ");
+						System.out.print(" Enter Password: ");
 						password = scanner.nextLine();
 						users.setPassword(password);
 			
-						System.out.print(" Enter emailId => ");
-						String emailId = scanner.nextLine();
-						users.setEmail(emailId);
+						System.out.print(" Enter Address: ");
+						String address = scanner.nextLine();
+						users.setEmail(address);
 			
-						System.out.print(" Enter phoneNo => ");
+						System.out.print(" Enter Phone Number: ");
 						String phoneNo = scanner.nextLine();
 						users.setPhone(phoneNo);
 					
-						listOfUsers.add(new Users(Name, emailId, emailId, username, password, phoneNo));
+						listOfUsers.add(new Users(Name, email, address, username, password, phoneNo));
 				case 3:
-				Users user = new Users();
-				System.out.print(user.toString());
+				System.out.print(loggedInUser.toString());
+							
+				
+				
 				break;
-		
+				
 			}
 		}while(option !=4);
 	}	

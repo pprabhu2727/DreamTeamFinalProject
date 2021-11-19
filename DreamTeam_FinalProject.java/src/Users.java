@@ -1,9 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.ArrayList;
 
 
 
@@ -68,7 +62,7 @@ public class Users{
 		return this.Password;
 	}
 	public String toString(){
-		return "User Info: \n Name: " + this.name + "\n Email " + this.Email + "\n Address " + this.Address + "\n Phone " + this.PhoneNumber; 
+		return "User Info: \n Name: " + getName() + "\n Email: " + getEmail() + "\n Address: " + getAddress() + "\n Phone:" + getPhone() +"\n"; 
 	}
 	
 }
@@ -81,13 +75,13 @@ class Admin extends Users{
 	}
 	@Override
 	public String toString(){
-		return "User Info: \n Name: " + getName() + "\n Email " + getEmail() + "\n Address " + getAddress() + "\n Phone " + getPhone(); 
+		return "User Info: \n Name: " + getName() + "\n Email " + getEmail() + "\n Address " + getAddress() + "\n Phone " + getPhone() + "\n Access Code:" + getCode(); 
 	}
 	public String getCode(){
 		return AccessCode;
 
 	}
-	public void setCode(){
+	public void setCode(String AccessCode){
 		this.AccessCode = AccessCode;
 	}
 }
