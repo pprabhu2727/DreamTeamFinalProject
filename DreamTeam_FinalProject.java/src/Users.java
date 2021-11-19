@@ -68,7 +68,22 @@ public class Users{
 		return this.Password;
 	}
 	public String toString(){
-		return "User Info: Name: " + this.name + "\n Email \n" + this.name + " ";
+		return "User Info: \n Name: " + this.name + "\n Email " + this.Email + "\n Address " + this.Address + "\n Phone " + this.PhoneNumber; 
 	}
 	
 }
+class Admin extends Users{
+	String AccessCode;
+	public Admin (String name, String Email, String Address, String Username, String Password, String PhoneNumber,String AccessCode){
+		super(name, Email, Address, Username, Password, PhoneNumber);
+		this.AccessCode = AccessCode;
+
+	}
+	@Override
+	public String toString(){
+		return "User Info: \n Name: " + getName() + "\n Email " + getEmail() + "\n Address " + getAddress() + "\n Phone " + getPhone(); 
+	}
+}
+
+
+
