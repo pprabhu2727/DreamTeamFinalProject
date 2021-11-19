@@ -83,6 +83,13 @@ class Admin extends Users{
 	public String toString(){
 		return "User Info: \n Name: " + getName() + "\n Email " + getEmail() + "\n Address " + getAddress() + "\n Phone " + getPhone(); 
 	}
+	public String getCode(){
+		return AccessCode;
+
+	}
+	public void setCode(){
+		this.AccessCode = AccessCode;
+	}
 }
 
 
