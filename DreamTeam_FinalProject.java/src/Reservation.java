@@ -15,7 +15,7 @@ public class Reservation {
 	}
 	
 	static Scanner key = new Scanner(System.in);
-
+/*
 	public void checkSpot() {
 		
 		System.out.println("Input the floor number that you would like to book from. \n");
@@ -33,7 +33,7 @@ public class Reservation {
 			System.out.println("Spot is currently filled by, " + spotName);			//loop back?
 		}
 	}
-	/*test*/
+*/
 	
 	@SuppressWarnings("unused")	//I have no clue affects spotNumber
 	public void reserveSpot() throws IOException{
