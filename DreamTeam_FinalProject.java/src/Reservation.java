@@ -33,7 +33,7 @@ public class Reservation {
 			System.out.println("Spot is currently filled by, " + spotName);			//loop back?
 		}
 	}
-	
+	/*test*/
 	
 	@SuppressWarnings("unused")	//I have no clue affects spotNumber
 	public void reserveSpot() throws IOException{
@@ -47,5 +47,48 @@ public class Reservation {
 		reserve.reserveParkingSpot(spotName, floorNumber, spotNumber, timeNumber, timeNumber2);
 		System.out.println("The spot you have choosen has now been booked from, " + timeNumber + " - " + timeNumber2 + ".\n");
 	}
-	
+	public class information {
+			private String Name;
+			private double floorNumber;
+			private String spotName;
+			private double timeNumber;
+			private double timeNumber2;
+
+			public void information (String Name, double floorNumber, double timeNumber, double timeNumber2 )
+			{
+				this.Name = Name;
+				this.floorNumber = floorNumber;
+				this.timeNumber = timeNumber;
+				this.timeNumber2 = timeNumber2;
+			}
+	public information() {
+
+	}
+	public void setName(String Name){
+		this.Name = Name;
+	}
+	public String getName(){
+		return this.Name;
+	}
+	public void setfloorNumber(double floorNumber){
+		this.floorNumber = floorNumber;
+	}
+	public double getfloorNumber(){
+		return this.floorNumber;
+	}
+	public void double gettimeNumber(double timeNumber){
+		this.timeNumber = timeNumber;
+	}
+	public double timeNumber(){
+		return this.timeNumber2;
+	}
+	public void double gettimeNumber2(double timeNumber2)
+	{
+		this.timeNumber2 = timeNumber2;
+	}
+	public double timeNumber2(){
+		return this.timeNumber2;
+	}
+
+	}
 }

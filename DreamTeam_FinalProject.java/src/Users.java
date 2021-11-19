@@ -71,6 +71,7 @@ public class Users{
 		return "User Info: Name: " + this.name + "\n Email \n" + this.name + " ";
 	}
 	
+<<<<<<< HEAD
 }
  class Login{
 
@@ -178,3 +179,6 @@ public class Users{
 }
 
 
+=======
+}
+>>>>>>> 14ea590ef063eb372c50dfed6e95199d90d83dc6
