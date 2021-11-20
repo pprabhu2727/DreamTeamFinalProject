@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /*
  * Represents all parking spaces that are on campus. Used for program initialization.
@@ -40,6 +41,29 @@ public class CampusParking {
 	public static ArrayList<ParkingGarage> getGarageList() {
 		return garageList;
 	}
+	
+	
+	/*Creates a boolean array of the availability of each slot in order for each floor of each garage*/	
+	/* On second thought, I'm thinking we don't need this. The only line you need is garageList.get(i).getFloorList().get(j).getSlots()*/
+		
+//	public HashMap<String, ArrayList<ParkingSlot>> getAvailabilityList() {
+//		HashMap<String, ArrayList<ParkingSlot>> garageMaps = new HashMap<String, ArrayList<ParkingSlot>>();  //Key format is "#:#" where you have GarageNumber:FloorNumber
+//		int numberOSlots = garageList.get(0).getFloorList().get(0).getNumberOfSlots();
+//				
+//		for(int i=1; i<=garageList.size(); i++) {
+//			for(int j=1; j<=garageList.get(0).getNumberOfFloors();j++) {
+//				String key = i + ":" + j;
+//				//boolean[] slotAvailabilityList = new boolean[numberOSlots];
+//				ArrayList<ParkingSlot> floorSlots = new ArrayList<ParkingSlot>();			
+//				for(int k=0; k<numberOSlots; k++) {
+//					//slotAvailabilityList[k] = garageList.get(i).getFloorList().get(j).getSlots().get(k+1).getAvailability();
+//					floorSlots.addAll(garageList.get(i).getFloorList().get(j).getSlots());
+//				}
+//				garageMaps.put(key, floorSlots);
+//			}
+//		}
+//		return garageMaps;
+//	}
 
 	
 	
