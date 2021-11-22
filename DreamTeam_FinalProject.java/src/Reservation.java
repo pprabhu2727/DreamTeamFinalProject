@@ -91,4 +91,24 @@ public class Reservation {
 	}
 
 	}
+
+	//Creating a temporary switch case (draft)
+	do {
+	switch(information){
+	case 1: // Enter in reservation Time,floor, etc.
+	break; 
+
+	case 2:
+	break;
+
+	case 3:  
+	break;
+
+	case 4:// Cancel reservation
+
+	default:
+	System.out.println( "Please enter a valid command\n"); 
+	}
+	}while(!isQuit);
+
 }
