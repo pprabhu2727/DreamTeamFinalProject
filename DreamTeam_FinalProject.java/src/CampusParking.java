@@ -11,9 +11,9 @@ public class CampusParking {
 	private static CampusParking instance;
 	
 	// Assuming for now that we have 5 garages with 6 floors each and 30 slots per floor.
-	private static final int NUM_GARAGES = 5;
-	private static final int FLOORS_PER_GARAGE = 6;
-	private static final int SLOTS_PER_FLOOR = 30;
+	static final int NUM_GARAGES = 5;
+	static final int FLOORS_PER_GARAGE = 6;
+	static final int SLOTS_PER_FLOOR = 48;
 	
 	//private static ParkingGarage[] garages = new ParkingGarage[NUM_GARAGES];
 	private static ArrayList<ParkingGarage> garageList = new ArrayList<ParkingGarage>(); //Creating an arrayList version for use in Map class
