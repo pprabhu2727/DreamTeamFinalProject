@@ -15,6 +15,8 @@ public class Reservation {
 	}
 	
 	static Scanner key = new Scanner(System.in);
+	static Scanner o = new Scanner(System.in);
+	
 /*
 	public void checkSpot() {
 		
@@ -25,7 +27,7 @@ public class Reservation {
 		
 		checkspot.getSpotName(String spotName); //something like this... fix later
 		
-		if (spotName == null) {
+		if (spotName == null) {							//getAvailability?
 			System.out.println("Spot is empty");
 		}
 		else {
@@ -35,80 +37,75 @@ public class Reservation {
 	}
 */
 	
-	@SuppressWarnings("unused")	//I have no clue affects spotNumber
-	public void reserveSpot() throws IOException{
-		
-		System.out.println("Input the time range that you would like to book for. (Military Time) \n Example: 12.30(enter), 16.30(enter)");
-		double timeNumber = key.nextDouble();
-		double timeNumber2 = key.nextDouble();
-		System.out.println("What name would you like to have this spot named under? ");
-		String spotName = key.toString();
-		
-		reserve.reserveParkingSpot(spotName, floorNumber, spotNumber, timeNumber, timeNumber2);
-		System.out.println("The spot you have choosen has now been booked from, " + timeNumber + " - " + timeNumber2 + ".\n");
-	}
-	public class information {
-			private String Name;
-			private double floorNumber;
-			private String spotName;
-			private double timeNumber;
-			private double timeNumber2;
+	int choice;
 
-			public void information (String Name, double floorNumber, double timeNumber, double timeNumber2 )
-			{
-				this.Name = Name;
-				this.floorNumber = floorNumber;
-				this.timeNumber = timeNumber;
-				this.timeNumber2 = timeNumber2;
-			}
-	public information() {
+		System.out.println(" Option 1 to reserve");
+		System.out.println(" Option 2 to cancel reservation");
+		System.out.println(" Option 3 to do a quick reservation");
+		System.out.println(" Option 4 to Exit");
 
-	}
-	public void setName(String Name){
-		this.Name = Name;
-	}
-	public String getName(){
-		return this.Name;
-	}
-	public void setfloorNumber(double floorNumber){
-		this.floorNumber = floorNumber;
-	}
-	public double getfloorNumber(){
-		return this.floorNumber;
-	}
-	public void double gettimeNumber(double timeNumber){
-		this.timeNumber = timeNumber;
-	}
-	public double timeNumber(){
-		return this.timeNumber2;
-	}
-	public void double gettimeNumber2(double timeNumber2)
-	{
-		this.timeNumber2 = timeNumber2;
-	}
-	public double timeNumber2(){
-		return this.timeNumber2;
-	}
+		choice = o.nextInt();
 
-	}
+		do{
+			switch(choice){
+				case 1:
 
-	//Creating a temporary switch case (draft)
-	do {
-	switch(information){
-	case 1: // Enter in reservation Time,floor, etc.
-	break; 
+				@SuppressWarnings("unused")	//I have no clue affects spotNumber
+				public void reserveSpot() throws IOException{
+					
+					System.out.println("Input the time range that you would like to book for. (Military Time) \n Example: 12.30(enter), 16.30(enter)");
+					double timeNumber = key.nextDouble();
+					double timeNumber2 = key.nextDouble();
+					System.out.println("What name would you like to have this spot named under? ");
+					String spotName = key.toString();
+					
+					reserve.reserveParkingSpot(spotName, floorNumber, spotNumber, timeNumber, timeNumber2);
+					System.out.println("The spot you have choosen has now been booked from, " + timeNumber + " - " + timeNumber2 + ".\n");
+				}
+				public class information {
+						private String Name;
+						private double floorNumber;
+						private String spotName;
+						private double timeNumber;
+						private double timeNumber2;
+			
+						public void information (String Name, double floorNumber, double timeNumber, double timeNumber2)
+						{
+							this.Name = Name;
+							this.floorNumber = floorNumber;
+							this.timeNumber = timeNumber;
+							this.timeNumber2 = timeNumber2;
+						}
+				public information() {
+			
+				}
+				public void setName(String Name){
+					this.Name = Name;
+				}
+				public String getName(){
+					return this.Name;
+				}
+				public void setfloorNumber(double floorNumber){
+					this.floorNumber = floorNumber;
+				}
+				public double getfloorNumber(){
+					return this.floorNumber;
+				}
+				}
+				/*break;
 
-	case 2:
-	break;
+				case 2:
 
-	case 3:  
-	break;
+				//Cancel reservation through spot location?
+				//break;
 
-	case 4:// Cancel reservation
+				case 3:
 
-	default:
-	System.out.println( "Please enter a valid command\n"); 
-	}
-	}while(!isQuit);
+				//Implement Map iteration for open slot
 
+
+			
+				}
+				*/
+		}while(choice !=4);
 }
