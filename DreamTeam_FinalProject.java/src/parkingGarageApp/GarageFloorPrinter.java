@@ -1,3 +1,4 @@
+package parkingGarageApp;
 import java.util.*;
 
 public class GarageFloorPrinter {

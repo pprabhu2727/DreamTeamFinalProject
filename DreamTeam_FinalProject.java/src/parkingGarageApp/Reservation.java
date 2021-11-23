@@ -1,3 +1,4 @@
+package parkingGarageApp;
 import java.io.IOException;
 import java.util.*;
 import org.junit.Rule;

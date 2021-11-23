@@ -1,3 +1,4 @@
+package parkingGarageApp;
 
 public class Vehicle {
 	private int    year;

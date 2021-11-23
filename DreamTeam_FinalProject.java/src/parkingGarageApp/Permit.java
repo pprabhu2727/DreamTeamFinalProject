@@ -1,3 +1,4 @@
+package parkingGarageApp;
 
 public class Permit {
 
