@@ -9,15 +9,13 @@ import java.util.Scanner;
 public class LoginManager {
 
 	private static ArrayList<Users> listOfUsers = new ArrayList<Users>();
+	private static Users loggedInUser = null; // Used to hold the instance of a user who successfully logged in
 	
 	public static void login() throws IOException{
 		
 		String greeting = "Welcome. Please login or register to continue.";
         String username;
         String password;
-
-        // Used to hold the instance of a user who successfully logged in
-        Users loggedInUser = null;
         
         // Add users to the list
         listOfUsers.add(new Users("Rayman", "email@email.com","Address","ThandiR","password","9166666666"));
@@ -107,13 +105,19 @@ public class LoginManager {
 						listOfUsers.add(new Users(Name, email, address, username, password, phoneNo));
 				case 3:
 				System.out.print(loggedInUser.toString());
-							
 				
-				
+				// Delete later, just for bypassing login system
+				case 4:
+					loggedInUser = listOfUsers.get(0);
+					
 				break;
 				
 			}
 		}while(option !=4);
-	}	
+	}
+	
+	public static Users getLoggedInUser() {
+		return loggedInUser;
+	}
 		
 }
