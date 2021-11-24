@@ -22,7 +22,9 @@ public class GarageFloorPrinter {
 			};
 	
 	
-	private static void createFloorMap(int garageNum, int floorNum) {
+	private static int createFloorMap(int garageNum, int floorNum) {
+		int numSlotsAvailable = 0;
+		
 		// Floor to be printed
 		GarageFloor floor = CampusParking.getGarageList().get(garageNum).getFloorList().get(floorNum);
 		
@@ -36,19 +38,22 @@ public class GarageFloorPrinter {
 						map[i][j] = 'R';
 					} else {
 						map[i][j] = 'A';
+						numSlotsAvailable++;
 					}
 					
 				}
 			}
 		}
+		return numSlotsAvailable;
 	}
 	
 	public static void print(int garageNum, int floorNum) {
-		createFloorMap(garageNum, floorNum);
+		// Garage and floor start at index 0 internally
+		int numAvailable = createFloorMap(garageNum - 1, floorNum - 1);
 		
 		System.out.println("----------------------------------------");
-		System.out.print("[Map of Garage " + garageNum + "]");
-		System.out.println("  [Available Spaces: " + "48" + "]\n");
+		System.out.print("[Garage " + garageNum + ", Floor " + floorNum +"]");
+		System.out.println("  [Available Spaces: " + numAvailable + "]\n");
 		
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 12; j++) {
