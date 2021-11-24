@@ -24,14 +24,12 @@ public class LoginManager {
         // Add users to the list
      	//listOfUsers.add(new Users("Rayman", "email@email.com","Address","ThandiR","password","9166666666"));
 		//listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","password","9166666666"));
-		File f = new File("input.txt");
-		Scanner input = new Scanner(f);
-      
+		
       
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner s = new Scanner(System.in);
 		System.out.println(greeting);
-		
+		boolean found = false;
 		int option = -1;
 	
 		do{
@@ -45,54 +43,64 @@ public class LoginManager {
     
 			switch(option){
 		       case 1:
-		        
+				Scanner input = new Scanner(new File("Output.txt"));
+				input.useDelimiter("[,\n]");
+
 		        System.out.println("Please type your username :");
 		        username = br.readLine();   
 		        System.out.println("Please type your password :");
 		        password = br.readLine();
-		
-		        // Iterate through list of users to see if we have a match
-		        Iterator<Users> iterator = listOfUsers.iterator();
+		try{
+				while(input.hasNext() && !found){
+				String	FileUser = input.next();
+				String	FilePassword= input.next();
+				if (FileUser.trim().equals(username.trim()) && password.trim().equals(password.trim())){
+						found = true;
+				}
+				String name = input.next();
+				String email = input.next();
+				String addy = input.next();
+				String phone = input.next(); 
+				listOfUsers.add(new Users(name, email, addy, FileUser, password, phone));
+				}
+				input.close();
+				System.out.println("Successful login");
 				
-		        for (Users user : listOfUsers)
-		        {
+		}catch(Exception e){
+			System.out.print("Invalid Password/Username");
+		}
+		        //Iterate through list of users to see if we have a match
+		     //  Iterator<Users> iterator = listOfUsers.iterator();
+				
+		      // for (Users user : listOfUsers)
+		     //   {
 
-		            if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
-		            {
+		         //   if (username.equals(getUsername()) && password.equals(getPassword()))
+		         //   {
 		               
-		                    loggedInUser = user;
+		             //    loggedInUser = user;
 		
-		                    // when a user is found, "break" stops iterating through the list
-		                    break;
+		           
+		              //      break;
 		                
-		            }
-		        }
+		        //  }
+		      //  }
 		
 		        // if loggedInUser was changed from null, it was successful
-		        if (loggedInUser != null)
-		        {
-		            System.out.println("User successfully logged in: "+loggedInUser.getName());
+		       // if (loggedInUser != null)
+		       // {
+		       //     System.out.println("User successfully logged in: "+loggedInUser.getName());
 
 					
-		        }
-		        else
-		        {
-		            System.out.println("Invalid username/password");
-		        }
-					break;
+		     //   }
+		       // else
+		      //  {
+		      //      System.out.println("Invalid username/password");
+		       // }
+				//	break;
 				case 2:
 					Users users = new Users();
 					Scanner scanner = new Scanner(System.in);
-						System.out.print(" Enter Name ");
-						String Name = scanner.nextLine();
-						users.setEmail(Name);
-						printString(Name);
-			
-						System.out.print(" Enter Email: ");
-						String email = scanner.nextLine();
-						users.setEmail(email);
-						printString(email);
-			
 						System.out.print(" Enter Username: ");
 						username = scanner.nextLine();
 						users.setUsername(username);
@@ -102,6 +110,16 @@ public class LoginManager {
 						password = scanner.nextLine();
 						users.setPassword(password);
 						printString(password);
+
+						System.out.print(" Enter Name ");
+						String Name = scanner.nextLine();
+						users.setEmail(Name);
+						printString(Name);
+			
+						System.out.print(" Enter Email: ");
+						String email = scanner.nextLine();
+						users.setEmail(email);
+						printString(email);
 			
 						System.out.print(" Enter Address: ");
 						String address = scanner.nextLine();
@@ -113,7 +131,7 @@ public class LoginManager {
 						users.setPhone(phone);
 						printString(phone);
 			
-						//listOfUsers.add(new Users(Name, email, address, username, password, phone));
+						listOfUsers.add(new Users(Name, email, address, username, password, phone));
 				case 3:
 				System.out.print(loggedInUser.toString());
 				
@@ -142,7 +160,7 @@ static void printToFile(String print) throws IOException {
 	FileWriter f= new FileWriter( new File("Output.txt"), true);
 	BufferedWriter b = new BufferedWriter(f);
 	PrintWriter p = new PrintWriter(b);
-	p.print(print + " ");
+	p.print(print + ",");
 	p.close();
   
 
