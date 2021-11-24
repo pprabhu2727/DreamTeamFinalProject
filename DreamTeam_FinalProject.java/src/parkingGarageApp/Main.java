@@ -16,21 +16,23 @@ public class Main {
 			System.out.println("Login error: " + e.getMessage());
 		}
 		
+		Users currentUser = LoginManager.getLoggedInUser();
+		
 		// TODO: Menu (main program loop)
-		menu();
+		menu(currentUser);
 		
 	}
 	
 	/*
 	 * Main program loop
 	 */
-	private static void menu() {
+	private static void menu(Users currentUser) {
 		Scanner in = new Scanner(System.in);
 		char userSelection;
 		boolean isQuit = false;
 		
 		do {
-			printMenu();
+			printMenu(currentUser);
 			userSelection = in.next().charAt(0);
 			
 			switch(userSelection) {
@@ -43,6 +45,27 @@ public class Main {
 			case 'r':
 				// TODO: add reservation functionality 
 				System.out.println("Reserving...");
+				break;
+				
+			case 'D':
+			case 'd':
+				if (currentUser.getReservation() == null) {
+					// in case of selection, treat as invalid
+					System.out.println("Please enter a valid command.\n");
+				} else {
+					// TODO: show reservation details
+					System.out.println("Showing reservation details...");
+				}
+				break;
+			
+			case 'C':
+			case 'c':
+				if (currentUser.getReservation() == null) {
+					// in case of selection, treat as invalid
+					System.out.println("Please enter a valid command.\n");
+				} else {
+					currentUser.setReservation(null);
+				}
 				break;
 				
 			case 'Q':
@@ -61,10 +84,15 @@ public class Main {
 	/*
 	 * Prints menu options
 	 */
-	private static void printMenu() {
+	private static void printMenu(Users currentUser) {
 		System.out.println("What would you like to do?");
 		System.out.println("  Enter M to view map");
-		System.out.println("  Enter R to reserve");
+		System.out.println("  Enter R to make a reservation");
+		if (currentUser.getReservation() != null) {
+			// Only print these options if user has a reservation
+			System.out.println("  Enter D to get details for a reservation");
+			System.out.println("  Enter C to cancel a reservation");
+		}
 		System.out.println("  Enter Q to quit");
 		
 	}
