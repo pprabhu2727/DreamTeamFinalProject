@@ -13,9 +13,7 @@ public class Vehicle {
 		this.license = license;
 	}
 	
-	public Vehicle() {
-		
-	}
+	public Vehicle() { }
 	
 	public void setYear(int year) {
 		this.year = year;
