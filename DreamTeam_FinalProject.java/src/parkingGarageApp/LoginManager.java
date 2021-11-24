@@ -1,7 +1,11 @@
 package parkingGarageApp;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -11,16 +15,17 @@ public class LoginManager {
 	private static ArrayList<Users> listOfUsers = new ArrayList<Users>();
 	private static Users loggedInUser = null; // Used to hold the instance of a user who successfully logged in
 	
-	public static void login() throws IOException{
+	public static void login() throws Exception{
 		
 		String greeting = "Welcome. Please login or register to continue.";
         String username;
         String password;
         
         // Add users to the list
-        listOfUsers.add(new Users("Rayman", "email@email.com","Address","ThandiR","password","9166666666"));
-		listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","password","9166666666"));
-     
+     	//listOfUsers.add(new Users("Rayman", "email@email.com","Address","ThandiR","password","9166666666"));
+		//listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","password","9166666666"));
+		File f = new File("input.txt");
+		Scanner input = new Scanner(f);
       
       
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -51,7 +56,7 @@ public class LoginManager {
 				
 		        for (Users user : listOfUsers)
 		        {
-		     
+
 		            if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
 		            {
 		               
@@ -80,29 +85,35 @@ public class LoginManager {
 					Scanner scanner = new Scanner(System.in);
 						System.out.print(" Enter Name ");
 						String Name = scanner.nextLine();
-						users.setName(Name);
+						users.setEmail(Name);
+						printString(Name);
 			
 						System.out.print(" Enter Email: ");
 						String email = scanner.nextLine();
 						users.setEmail(email);
+						printString(email);
 			
 						System.out.print(" Enter Username: ");
 						username = scanner.nextLine();
 						users.setUsername(username);
+						printString(username);
 			
 						System.out.print(" Enter Password: ");
 						password = scanner.nextLine();
 						users.setPassword(password);
+						printString(password);
 			
 						System.out.print(" Enter Address: ");
 						String address = scanner.nextLine();
 						users.setEmail(address);
+						printString(address);
 			
 						System.out.print(" Enter Phone Number: ");
-						String phoneNo = scanner.nextLine();
-						users.setPhone(phoneNo);
-					
-						listOfUsers.add(new Users(Name, email, address, username, password, phoneNo));
+						String phone = scanner.nextLine();
+						users.setPhone(phone);
+						printString(phone);
+			
+						//listOfUsers.add(new Users(Name, email, address, username, password, phone));
 				case 3:
 				System.out.print(loggedInUser.toString());
 				
@@ -119,5 +130,22 @@ public class LoginManager {
 	public static Users getLoggedInUser() {
 		return loggedInUser;
 	}
-		
+static void printString(String s) throws Exception {
+		FileWriter f= new FileWriter( new File("Output.txt"), true);
+		BufferedWriter b = new BufferedWriter(f);
+		PrintWriter p = new PrintWriter(b);
+		p.print(s);
+		p.close();
+}	
+static void printToFile(String print) throws IOException {
+	
+	FileWriter f= new FileWriter( new File("Output.txt"), true);
+	BufferedWriter b = new BufferedWriter(f);
+	PrintWriter p = new PrintWriter(b);
+	p.print(print + " ");
+	p.close();
+  
+
+}
+
 }
