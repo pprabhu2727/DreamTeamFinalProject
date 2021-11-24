@@ -53,7 +53,7 @@ public class LoginManager {
 				while(input.hasNext() && !found){
 				String	FileUser = input.next();
 				String	FilePassword= input.next();
-				if (FileUser.trim().equals(username.trim()) && password.trim().equals(password.trim())){
+				if (FileUser.equals(username) && password.equals(password)){
 						found = true;
 				}
 				String name = input.next();
@@ -61,11 +61,13 @@ public class LoginManager {
 				String addy = input.next();
 				String phone = input.next(); 
 				listOfUsers.add(new Users(name, email, addy, FileUser, password, phone));
-				}
 				input.close();
+				}
+				
 				System.out.println("Successful login");
 				
 		}catch(Exception e){
+			input.close();
 			System.out.print("Invalid Password/Username");
 		}
 		        //Iterate through list of users to see if we have a match
@@ -103,34 +105,34 @@ public class LoginManager {
 						System.out.print(" Enter Username: ");
 						username = scanner.nextLine();
 						users.setUsername(username);
-						printString(username);
+						printToFile(username);
 			
 						System.out.print(" Enter Password: ");
 						password = scanner.nextLine();
 						users.setPassword(password);
-						printString(password);
+						printToFile(password);
 
 						System.out.print(" Enter Name ");
 						String Name = scanner.nextLine();
 						users.setEmail(Name);
-						printString(Name);
+						printToFile(Name);
 			
 						System.out.print(" Enter Email: ");
 						String email = scanner.nextLine();
 						users.setEmail(email);
-						printString(email);
+						printToFile(email);
 			
 						System.out.print(" Enter Address: ");
 						String address = scanner.nextLine();
 						users.setEmail(address);
-						printString(address);
+						printToFile(address);
 			
 						System.out.print(" Enter Phone Number: ");
 						String phone = scanner.nextLine();
 						users.setPhone(phone);
-						printString(phone);
-			
-						listOfUsers.add(new Users(Name, email, address, username, password, phone));
+						printToFile(phone);
+						printToFile("\n");
+						scanner.close();
 				case 3:
 				System.out.print(loggedInUser.toString());
 				
@@ -147,19 +149,19 @@ public class LoginManager {
 	public static Users getLoggedInUser() {
 		return loggedInUser;
 	}
-static void printString(String s) throws Exception {
+/*static void printString(String s) throws Exception {
 		FileWriter f= new FileWriter( new File("Output.txt"), true);
 		BufferedWriter b = new BufferedWriter(f);
 		PrintWriter p = new PrintWriter(b);
-		p.print(s);
+		p.print(s + " ");
 		p.close();
-}	
+}	*/
 static void printToFile(String print) throws IOException {
 	
 	FileWriter f= new FileWriter( new File("Output.txt"), true);
 	BufferedWriter b = new BufferedWriter(f);
 	PrintWriter p = new PrintWriter(b);
-	p.print(print + ",");
+	p.print(print + " ");
 	p.close();
   
 
