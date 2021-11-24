@@ -121,6 +121,6 @@ public class Main {
 			
 		} while(!floorNumValid);
 		
-		GarageFloorPrinter.print(garageNum - 1, floorNum - 1); // Internally garages and floors start at 0
+		GarageFloorPrinter.print(garageNum, floorNum);
 	}
 }
