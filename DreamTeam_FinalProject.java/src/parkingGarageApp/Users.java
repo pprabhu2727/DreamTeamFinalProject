@@ -11,6 +11,8 @@ public class Users{
 	private String Username;
 	private String Password;
 	private String PhoneNumber;
+	private Vehicle vehicle;
+	private Reservation reservation;
 	
 	public Users(String name, String Email, String Address, String Username, String Password, String PhoneNumber) {
 		this.name = name;
@@ -61,6 +63,18 @@ public class Users{
 	}
 	public String getPassword() {
 		return this.Password;
+	}
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
+	}
+	public Reservation getReservation() {
+		return reservation;
 	}
 	public String toString(){
 		return "User Info: \n Name: " + getName() + "\n Email: " + getEmail() + "\n Address: " + getAddress() + "\n Phone:" + getPhone() +"\n"; 
