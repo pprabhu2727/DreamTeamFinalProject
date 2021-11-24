@@ -44,8 +44,7 @@ public class LoginManager {
 			switch(option){
 		       case 1:
 				Scanner input = new Scanner(new File("Output.txt"));
-				input.useDelimiter("[,\n]");
-
+			
 		        System.out.println("Please type your username :");
 		        username = br.readLine();   
 		        System.out.println("Please type your password :");
