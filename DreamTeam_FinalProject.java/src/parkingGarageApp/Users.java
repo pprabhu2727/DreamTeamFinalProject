@@ -73,6 +73,7 @@ public class Users{
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
+	
 	public Reservation getReservation() {
 		return reservation;
 	}
