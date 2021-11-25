@@ -38,6 +38,9 @@ public class Reservation {
 	}
 */
 	
+	
+	
+	
 	int choice;
 
 		System.out.println(" Option 1 to reserve");
@@ -93,20 +96,54 @@ public class Reservation {
 					return this.floorNumber;
 				}
 				}
-				/*break;
+			/*
+				break;
 
 				case 2:
-
 				//Cancel reservation through spot location?
-				//break;
+				break;
 
 				case 3:
+				//Quick Reserve. (Pseudo code that needs to be edited after the previous errors in this class are fixed)
+				 
+				int garageNumber, floorNumber, slotNumber;
+				boolean foundSlot = false;
+				while(!foundSlot){
+						for(int i=1; i<=garageList.size(); i++) {
+							for(int j=1; j<=garageList.get(0).getNumberOfFloors();j++) {			
+								for(int k=0; k<numberOSlots; k++) {
+									boolean slotAvailability = garageList.get(i).getFloorList().get(j).getSlots().get(k+1).getAvailability();
+									if (slotAvailability){
+										slotNumber = garageList.get(i).getFloorList().get(j).getSlots().get(k+1).getSlotNumber();
+										garageNumber=i;
+										floorNumber=j;
+										foundSlot=true;
 
-				//Implement Map iteration for open slot
-
-
+									}
+									if(foundSlot){
+										break;
+									}
+								}
+								if(foundSlot){
+										break;
+								}
+							}
+							if(foundSlot){
+										break;
+							}
+						}
+						
+						//Now do the reservation with garageNumber, floorNumber, slotNumber
+						
+				}
+				
+				 
+				default:
+					
+			 */
 			
 				}
-				*/
+				
 		}while(choice !=4);
+	}
 }
