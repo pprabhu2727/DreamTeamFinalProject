@@ -57,11 +57,14 @@ public class Reservation {
 				@SuppressWarnings("unused")	//I have no clue affects spotNumber
 				public void reserveSpot() throws IOException{
 					
-					System.out.println("Input the time range that you would like to book for. (Military Time) \n Example: 12.30(enter), 16.30(enter)");
-					double timeNumber = key.nextDouble();
-					double timeNumber2 = key.nextDouble();
+					//System.out.println("Input the time range that you would like to book for. (Military Time) \n Example: 12.30(enter), 16.30(enter)");
+					//double timeNumber = key.nextDouble();
+					//double timeNumber2 = key.nextDouble();
 					System.out.println("What name would you like to have this spot named under? ");
 					String spotName = key.toString();
+					System.out.println("Enter in Floor Number");
+					double floorNumber = key.nextDouble();
+					
 					
 					reserve.reserveParkingSpot(spotName, floorNumber, spotNumber, timeNumber, timeNumber2);
 					System.out.println("The spot you have choosen has now been booked from, " + timeNumber + " - " + timeNumber2 + ".\n");
@@ -101,6 +104,19 @@ public class Reservation {
 
 				case 2:
 				//Cancel reservation through spot location?
+					String name, double floorNumber, slotNumber;
+					while (input.hasNext() && !found){
+				try {
+					if (information.equals(name)) && (information.equals(floorNumber) && (informatiion.equals(slotNumber)))
+					{
+						found = true;
+					}
+				}
+				System.out.println ("Cancelation successful")
+			}catch(Exception e){
+
+				System.out.println( "Cancelation unsuccessful")
+			}
 				break;
 
 				case 3:
