@@ -21,6 +21,7 @@ public class Reservation {
 	private ParkingGarage getFloorNumber;
 	private ParkingSlot getAvaSlot;
 	int choice, gChoice, fChoice, sChoice;
+	Boolean reservation;
 
 			public Reservation(int garageNumber, int floorNumber, int slotNumber)
 			{
@@ -48,12 +49,22 @@ public class Reservation {
 							{
 								ParkingSlot.changeAvailability;
 								ParkingSlot.setUser;
+								reservation = true;
 							}
 				
 							break;
 
 						case 2:
-							//Cancel reservation through spot location?
+
+							/* Idea?
+							if(Users.getReservation == true)
+							{
+								ParkingSlot.clearUser;
+							}
+		
+							*/
+
+							/*Cancel reservation through spot location?
 								String name, int floorNumber, slotNumber;
 								while (input.hasNext() && !found){
 							try {
@@ -67,6 +78,7 @@ public class Reservation {
 
 								System.out.println( "Cancelation unsuccessful");
 							}
+							*/
 
 							break;
 
