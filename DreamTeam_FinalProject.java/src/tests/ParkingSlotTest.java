@@ -2,10 +2,11 @@ package tests;
 
 import static org.junit.Assert.*;
 import parkingGarageApp.ParkingSlot;
-import parkingGarageApp.Permit;
 import parkingGarageApp.Users;
 
 import org.junit.Test;
+
+import old.Permit;
 
 public class ParkingSlotTest {
 

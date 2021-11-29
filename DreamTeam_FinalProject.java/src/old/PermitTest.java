@@ -1,5 +1,4 @@
-package tests;
-import parkingGarageApp.Permit; 
+package old;
 import static org.junit.Assert.*;
 
 import org.junit.Test;

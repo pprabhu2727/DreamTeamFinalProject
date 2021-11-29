@@ -5,12 +5,14 @@ public class Vehicle {
 	private String make;
 	private String model;
 	private String license;
+	private String permit;
 	
-	public Vehicle(int year, String make, String model, String license) {
+	public Vehicle(int year, String make, String model, String license, String permit) {
 		this.make = make;
 		this.model = model;
 		this.year = year;
 		this.license = license;
+		this.permit = permit;
 	}
 	
 	public Vehicle() { }
@@ -31,6 +33,10 @@ public class Vehicle {
 		this.license = license;
 	}
 	
+	public void setPermit(String permit) {
+		this.permit = permit;
+	}
+	
 	public int getYear() {
 		return year;
 	}
@@ -47,8 +53,13 @@ public class Vehicle {
 		return license;
 	}
 	
+	public String getPermit() {
+		return permit;
+	}
+	
 	public String toString() {
 		return year + " " + make + " " + model
-			   + "\nLicense Plate: " + license;
+			   + "\nLicense Plate: " + license
+			   + "\nPermit: " + permit;
 	}
 }
