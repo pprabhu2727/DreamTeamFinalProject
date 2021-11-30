@@ -16,9 +16,8 @@ public class LoginManager {
 
 	private static ArrayList<Users> listOfUsers = new ArrayList<Users>();
 	private static Users loggedInUser = null; // Used to hold the instance of a user who successfully logged in
-<<<<<<< HEAD
 	private static Scanner s = new Scanner(System.in);
-	public static void login() throws Exception{
+	public static void login(Scanner in) throws Exception{
 		
 		String greeting = "Welcome. Please login or register to continue.";
         String username;
@@ -29,13 +28,6 @@ public class LoginManager {
     
 	
 		System.out.println(greeting);
-=======
-	
-	public static void login(Scanner s) throws Exception{
-        
-		//Scanner s = new Scanner(System.in);
-		System.out.println("Welcome. Please login or register to continue.");
->>>>>>> 291c142ad2d8b3c369a8da0bfd6186f64cb8acd0
 		int option = -1;
 		boolean isLoggedIn = false;
 	
@@ -49,7 +41,6 @@ public class LoginManager {
 			
 			switch(option){
 		       case 1:
-<<<<<<< HEAD
 			 
 			 
 			
@@ -58,18 +49,8 @@ public class LoginManager {
 		        System.out.println("Please type your password :");
 		        password = s.next();
 			
-				Reader("Output.txt");		
+				accountFileReader("Output.txt");		
 				
-=======
-
-		    	   System.out.println("Please type your username :");
-		    	   String username = s.next();   
-		    	   System.out.println("Please type your password :");
-		    	   String password = s.next();
-		    	   
-		    	   accountFileReader("Output.txt");
-		    	   //Valid(username,password);
->>>>>>> 291c142ad2d8b3c369a8da0bfd6186f64cb8acd0
 		     
 		    	   for (Users user : listOfUsers)
 		    	   {
@@ -163,7 +144,7 @@ public class LoginManager {
 		if (print.equals("\n")) {
 			p.print(print);
 		} else {
-			p.print(print + ",");
+			p.print(print + ";");
 		}
 		
 		p.close();
@@ -216,7 +197,7 @@ public class LoginManager {
 			
 			while(in.hasNextLine()) {
 				String userInfo = in.nextLine();
-				StringTokenizer stringTokenizer = new StringTokenizer(userInfo, ",");
+				StringTokenizer stringTokenizer = new StringTokenizer(userInfo, ";");
 				
 				while(stringTokenizer.hasMoreTokens()){
 					String Username = stringTokenizer.nextToken();
