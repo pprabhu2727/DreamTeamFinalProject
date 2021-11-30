@@ -2,11 +2,13 @@ package parkingGarageApp;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -26,7 +28,7 @@ public class LoginManager {
 		//listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","password","9166666666"));
 		
       
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    
 		Scanner s = new Scanner(System.in);
 		System.out.println(greeting);
 		boolean found = false;
@@ -43,62 +45,32 @@ public class LoginManager {
     
 			switch(option){
 		       case 1:
-				Scanner input = new Scanner(new File("Output.txt"));
+			 
+			 
 			
 		        System.out.println("Please type your username :");
-		        username = br.readLine();   
+		        username = s.next();   
 		        System.out.println("Please type your password :");
-		        password = br.readLine();
-		try{
-				while(input.hasNext() && !found){
-				String	FileUser = input.next();
-				String	FilePassword= input.next();
-				if (FileUser.equals(username) && password.equals(password)){
-						found = true;
-				}
-				String name = input.next();
-				String email = input.next();
-				String addy = input.next();
-				String phone = input.next(); 
-				listOfUsers.add(new Users(name, email, addy, FileUser, password, phone));
-				input.close();
-				}
-				
-				System.out.println("Successful login");
-				
-		}catch(Exception e){
-			input.close();
-			System.out.print("Invalid Password/Username");
-		}
-		        //Iterate through list of users to see if we have a match
-		     //  Iterator<Users> iterator = listOfUsers.iterator();
-				
-		      // for (Users user : listOfUsers)
-		     //   {
+		        password = s.next();
 
-		         //   if (username.equals(getUsername()) && password.equals(getPassword()))
-		         //   {
+	
+				Valid(username,password);
+		     
+		    
+		      for (Users user : listOfUsers)
+		      {
+
+		      
 		               
-		             //    loggedInUser = user;
+		            loggedInUser = user;
 		
 		           
-		              //      break;
+		               break;
 		                
-		        //  }
-		      //  }
-		
-		        // if loggedInUser was changed from null, it was successful
-		       // if (loggedInUser != null)
-		       // {
-		       //     System.out.println("User successfully logged in: "+loggedInUser.getName());
-
-					
-		     //   }
-		       // else
-		      //  {
-		      //      System.out.println("Invalid username/password");
-		       // }
-				//	break;
+		          }
+		      
+				  break;
+		      
 				case 2:
 					Users users = new Users();
 					Scanner scanner = new Scanner(System.in);
@@ -142,20 +114,15 @@ public class LoginManager {
 					
 				break;
 				
-			}
+			  }
 		}while(option !=4);
+		
 	}
 	
 	public static Users getLoggedInUser() {
 		return loggedInUser;
 	}
-/*static void printString(String s) throws Exception {
-		FileWriter f= new FileWriter( new File("Output.txt"), true);
-		BufferedWriter b = new BufferedWriter(f);
-		PrintWriter p = new PrintWriter(b);
-		p.print(s + " ");
-		p.close();
-}	*/
+
 static void printToFile(String print) throws IOException {
 	
 	FileWriter f= new FileWriter( new File("Output.txt"), true);
@@ -166,5 +133,42 @@ static void printToFile(String print) throws IOException {
   
 
 }
+static void Valid(String username, String password) throws IOException {
+	boolean found = false;
+	String FileUser = "";
+	String FilePassword = "";
+	
+	try{
+		Scanner input = new Scanner(new File("Output.txt"));
+		//input.useDelimiter("[,\n]");
+		while(input.hasNext() && !found){
+			FileUser = input.next();
+			FilePassword= input.next();
+			 System.out.println(FileUser);
+			 System.out.println(FilePassword);
+		if (FileUser.trim().equals(username.trim()) && FilePassword.trim().equals(password.trim())){
+				found = true;
+				String name = input.next();
+				String email = input.next();
+				String addy = input.next();
+				String phone = input.next(); 
+				listOfUsers.add(new Users(name, email, addy, FileUser, password, phone));
+				System.out.println("Successful login");
+				break;
+		
+		}
+	
+		
+		input.close();
+		
 
+		
+		}
+		
+	
+		
+}catch(Exception e){
+	System.out.println("Invalid Password/Username");
+}
+}
 }
