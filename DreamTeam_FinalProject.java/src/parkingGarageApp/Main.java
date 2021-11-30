@@ -8,10 +8,11 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		// TODO: Initialization tasks 
 		CampusParking.createInstance();
+		Scanner in = new Scanner(System.in);
 		
 		// TODO: Login system
 		try {
-			LoginManager.login();
+			LoginManager.login(in);
 		} catch (IOException e) {
 			System.out.println("Login error: " + e.getMessage());
 		}
@@ -19,15 +20,16 @@ public class Main {
 		Users currentUser = LoginManager.getLoggedInUser();
 		
 		// TODO: Menu (main program loop)
-		menu(currentUser);
+		menu(currentUser, in);
+		
+		//in.close();
 		
 	}
 	
 	/*
 	 * Main program loop
 	 */
-	private static void menu(Users currentUser) {
-		Scanner in = new Scanner(System.in);
+	private static void menu(Users currentUser, Scanner in) {
 		char userSelection;
 		boolean isQuit = false;
 		
@@ -78,7 +80,6 @@ public class Main {
 			}
 		} while (!isQuit);
 		
-		in.close();
 	}
 
 	/*
