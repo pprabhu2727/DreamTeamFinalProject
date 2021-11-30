@@ -1,11 +1,14 @@
 package tests;
 import parkingGarageApp.Users;
+import parkingGarageApp.Vehicle;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class UsersTest {
 
+	//get tests
 	@Test
 	public void getNametest() {
 		String s = "Randall Boggs";
@@ -45,6 +48,84 @@ public class UsersTest {
 	public void getPasswordtest() {
 		String s = "abc123";
 		Users p = new Users("", "", "", "", s, "");
+		assertEquals("abc123", p.getPassword());
+	}
+	
+	/*
+	@Test
+	public void getVehicletest() {
+		int year = 1990;
+		String make = "toyota";
+		String model = "corolla";
+		String license = "*******";
+		String permit = "permit";
+		
+		Vehicle p = new Vehicle(year, make, model, license, permit);
+		Users b = new Users("", "", "", "", "", "");
+		assertEquals("abc123", b.getVehicle());
+	}
+	*/
+	
+	@Test
+	public void toStringtest() {
+		String username = "vboyack";
+		String password = "abc123";
+		String name = "Randall";
+		String email = "vboyack@csus.edu";
+		String address = "6000 J Street, Sacramento, CA 95819";
+		String phone = "(916)278-6011";
+		String s = "User Info:"+"\n Username: " + username + "\n Password: " + password + "\n Name: " + name +  "\n Email: " + email + "\n Address: " + address + "\n Phone:" + phone +"\n";
+		Users p = new Users(name, email, address, username, password, phone);
+		assertEquals(s, p.toString());
+	}
+	
+	//set tests
+	
+	@Test
+	public void setNametest() {
+		String s = "Randall Boggs";
+		Users p = new Users("", "", "", "", "", "");
+		p.setName(s);
+		assertEquals("Randall Boggs", p.getName());
+	}
+	
+	@Test
+	public void setEmailtest() {
+		String s = "vboyack@csus.edu";
+		Users p = new Users("", "", "", "", "", "");
+		p.setEmail(s);
+		assertEquals("vboyack@csus.edu", p.getEmail());
+	}
+	
+	@Test
+	public void setAddresstest() {
+		String s = "6000 J Street, Sacramento, CA 95819";
+		Users p = new Users("", "", "", "", "", "");
+		p.setAddress(s);
+		assertEquals("6000 J Street, Sacramento, CA 95819", p.getAddress());
+	}
+	
+	@Test
+	public void setUsernametest() {
+		String s = "vboyack";
+		Users p = new Users("", "", "", "", "", "");
+		p.setUsername(s);
+		assertEquals("vboyack", p.getUsername());
+	}
+	
+	@Test
+	public void setPhonetest() {
+		String s = "(916)278-6011";
+		Users p = new Users("", "", "", "", "", "");
+		p.setPhone(s);
+		assertEquals("(916)278-6011", p.getPhone());
+	}
+	
+	@Test
+	public void setPasswordtest() {
+		String s = "abc123";
+		Users p = new Users("", "", "", "", "", "");
+		p.setPassword(s);
 		assertEquals("abc123", p.getPassword());
 	}
 }
