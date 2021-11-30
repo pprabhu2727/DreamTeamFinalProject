@@ -207,6 +207,7 @@ public class LoginManager {
 					String address =stringTokenizer.nextToken();
 					String Phone = stringTokenizer.nextToken();
 					
+					
 					listOfUsers.add(new Users(Name, email, address, Username, Password, Phone));	
 				}
 				
