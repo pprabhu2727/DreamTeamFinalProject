@@ -2,6 +2,7 @@ package parkingGarageApp;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -53,8 +54,7 @@ public class LoginManager {
 		        System.out.println("Please type your password :");
 		        password = s.next();
 
-	
-				Valid(username,password);
+				Reader("Output.txt");		Valid(username,password);
 		     
 		    
 		      for (Users user : listOfUsers)
@@ -155,6 +155,10 @@ static void Valid(String username, String password) throws IOException {
 				listOfUsers.add(new Users(name, email, addy, FileUser, password, phone));
 				System.out.println("Successful login");
 				break;
+		}else{
+	
+			String s = input.nextLine();
+			System.out.print(s);
 		
 		}
 	
@@ -170,5 +174,23 @@ static void Valid(String username, String password) throws IOException {
 }catch(Exception e){
 	System.out.println("Invalid Password/Username");
 }
+}
+public static void Reader(String FileName) throws IOException{
+	BufferedReader br = new BufferedReader(new FileReader(FileName));
+	ArrayList<Users> List = new ArrayList<Users>();
+	String line = null;
+	while((line = br.readLine()) !=null){
+		String[] peopleInfo = line.split("\\;");
+		String Username = peopleInfo[0];
+		String Password = peopleInfo[1];
+		String Name = peopleInfo[2];
+		String email= peopleInfo[3];
+		String address = peopleInfo[4];
+		String Phone = peopleInfo[5];
+		List.add(new Users(Username, Password, Password, Password, Password, Password));
+	}
+	for(Users u: List){
+		System.out.println(u);
+	}
 }
 }
