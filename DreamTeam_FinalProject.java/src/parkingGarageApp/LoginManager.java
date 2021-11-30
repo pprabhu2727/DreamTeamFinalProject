@@ -6,11 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -18,7 +16,7 @@ public class LoginManager {
 
 	private static ArrayList<Users> listOfUsers = new ArrayList<Users>();
 	private static Users loggedInUser = null; // Used to hold the instance of a user who successfully logged in
-	
+	private static Scanner s = new Scanner(System.in);
 	public static void login() throws Exception{
 		
 		String greeting = "Welcome. Please login or register to continue.";
@@ -28,7 +26,7 @@ public class LoginManager {
         
       
     
-		Scanner s = new Scanner(System.in);
+	
 		System.out.println(greeting);
 		int option = -1;
 	
@@ -52,7 +50,7 @@ public class LoginManager {
 		        password = s.next();
 			
 				Reader("Output.txt");		
-				//Valid(username,password);
+				
 		     
 		    
 				for (Users user : listOfUsers)
