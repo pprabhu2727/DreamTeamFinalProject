@@ -36,7 +36,7 @@ public class Main {
 		do {
 			printMenu(currentUser);
 			userSelection = in.next().charAt(0);
-			
+			 
 			switch(userSelection) {
 			case 'M': 
 			case 'm':

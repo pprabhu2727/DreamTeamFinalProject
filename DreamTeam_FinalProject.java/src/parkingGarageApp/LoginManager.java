@@ -104,7 +104,7 @@ public class LoginManager {
 						String phone = s.nextLine();
 						user.setPhone(phone);
 						printToFile(phone);
-						
+					
 					loggedInUser = user;
 					isLoggedIn = true;
 					break;
