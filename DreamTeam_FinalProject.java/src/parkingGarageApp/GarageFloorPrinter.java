@@ -1,9 +1,6 @@
 package parkingGarageApp;
-import java.util.*;
 
 public class GarageFloorPrinter {
-	
-	static int slotNumber[] = new int[48];
 	
 	private static char map[][] = { 
 			{ '@', '*', 'A', 'A', 'A', 'A', 'A', 'A', '*', 'E' },
@@ -47,20 +44,16 @@ public class GarageFloorPrinter {
 		// Garage and floor start at index 0 internally
 		int numAvailable = createFloorMap(garageNum - 1, floorNum - 1);
 		
-		for (int i = 0; i < slotNumber.length; i++) {
-			slotNumber[i] = i+1;
-		}
-
-		
 		System.out.println("----------------------------------------");
 		System.out.print("[Garage " + garageNum + ", Floor " + floorNum +"]");
 		System.out.println("  [Available Spaces: " + numAvailable + "]\n");
 		
+		// Replace 'A' on map with the appropriate slot number
 		int k = 0;
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (map[i][j] == 'A') {
-					System.out.print(slotNumber[k] + " ");
+					System.out.print(CampusParking.getGarageList().get(garageNum).getFloorList().get(floorNum).getSlots().get(k).getSlotNumber() + " ");
 					if (k < 9) {
 						System.out.print(" ");
 					}
@@ -77,10 +70,7 @@ public class GarageFloorPrinter {
 		}
 		
 		System.out.println("\n[Key]");
-		//System.out.println("[A = Available Slot]");
 		System.out.println("[R = Reserved Slot]");
-		//System.out.println("[H = Handicapped Slot]");
-		//System.out.println("[S = Staff-Only Slot]");
 		System.out.println("[@ = Stairs]");
 		System.out.println("[E = Elevators]");
 		System.out.println("----------------------------------------");
