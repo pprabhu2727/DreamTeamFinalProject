@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class LoginManager {
 
@@ -24,15 +25,11 @@ public class LoginManager {
         String username;
         String password;
         
-        // Add users to the list
-     	//listOfUsers.add(new Users("Rayman", "email@email.com","Address","ThandiR","password","9166666666"));
-		//listOfUsers.add(new Users("Joe", "email@email.com","Address","ThandiR","password","9166666666"));
-		
+        
       
     
 		Scanner s = new Scanner(System.in);
 		System.out.println(greeting);
-		boolean found = false;
 		int option = -1;
 	
 		do{
@@ -53,23 +50,36 @@ public class LoginManager {
 		        username = s.next();   
 		        System.out.println("Please type your password :");
 		        password = s.next();
-
-				Reader("Output.txt");		Valid(username,password);
+			
+				Reader("Output.txt");		
+				//Valid(username,password);
 		     
 		    
-		      for (Users user : listOfUsers)
-		      {
-
-		      
+				for (Users user : listOfUsers)
+		        {
+		     
+		            if (username.equals(user.getUsername()) && password.equals(user.getPassword()))
+		            {
 		               
-		            loggedInUser = user;
+		                    loggedInUser = user;
 		
-		           
-		               break;
+		                    // when a user is found, "break" stops iterating through the list
+		                    break;
 		                
-		          }
-		      
-				  break;
+		            }
+		        }
+		
+		        // if loggedInUser was changed from null, it was successful
+		        if (loggedInUser != null)
+		        {
+		            System.out.println("User successfully logged in: "+loggedInUser.getName());
+					
+		        }
+		        else
+		        {
+		            System.out.println("Invalid username/password");
+		        }
+					break;
 		      
 				case 2:
 					Users users = new Users();
@@ -103,7 +113,6 @@ public class LoginManager {
 						String phone = scanner.nextLine();
 						users.setPhone(phone);
 						printToFile(phone);
-						printToFile("\n");
 						scanner.close();
 				case 3:
 				System.out.print(loggedInUser.toString());
@@ -114,7 +123,8 @@ public class LoginManager {
 					
 				break;
 				
-			  }
+			}
+		
 		}while(option !=4);
 		
 	}
@@ -128,69 +138,44 @@ static void printToFile(String print) throws IOException {
 	FileWriter f= new FileWriter( new File("Output.txt"), true);
 	BufferedWriter b = new BufferedWriter(f);
 	PrintWriter p = new PrintWriter(b);
-	p.print(print + " ");
+	p.print(print + ",");
 	p.close();
   
 
 }
-static void Valid(String username, String password) throws IOException {
-	boolean found = false;
-	String FileUser = "";
-	String FilePassword = "";
+
+public static void Reader(String FileName) throws IOException{
+
+	try {
+		BufferedReader br;
+		br = new BufferedReader(new FileReader(FileName));
+		String line = br.readLine();
 	
-	try{
-		Scanner input = new Scanner(new File("Output.txt"));
-		//input.useDelimiter("[,\n]");
-		while(input.hasNext() && !found){
-			FileUser = input.next();
-			FilePassword= input.next();
-			 System.out.println(FileUser);
-			 System.out.println(FilePassword);
-		if (FileUser.trim().equals(username.trim()) && FilePassword.trim().equals(password.trim())){
-				found = true;
-				String name = input.next();
-				String email = input.next();
-				String addy = input.next();
-				String phone = input.next(); 
-				listOfUsers.add(new Users(name, email, addy, FileUser, password, phone));
-				System.out.println("Successful login");
-				break;
-		}else{
-	
-			String s = input.nextLine();
-			System.out.print(s);
-		
-		}
-	
-		
-		input.close();
-		
+
+	StringTokenizer stringTokenizer = new StringTokenizer(line,";");
+	while(stringTokenizer.hasMoreTokens()){
+		String Username = stringTokenizer.nextToken();
+		String Password = stringTokenizer.nextToken();
+		String Name = stringTokenizer.nextToken();
+		String email= stringTokenizer.nextToken();
+		String address =stringTokenizer.nextToken();
+		String Phone = stringTokenizer.nextToken();
 
 		
-		}
-		
+		listOfUsers.add(new Users(Name, email, address, Username, Password, Phone));
 	
 		
-}catch(Exception e){
-	System.out.println("Invalid Password/Username");
-}
-}
-public static void Reader(String FileName) throws IOException{
-	BufferedReader br = new BufferedReader(new FileReader(FileName));
-	ArrayList<Users> List = new ArrayList<Users>();
-	String line = null;
-	while((line = br.readLine()) !=null){
-		String[] peopleInfo = line.split("\\;");
-		String Username = peopleInfo[0];
-		String Password = peopleInfo[1];
-		String Name = peopleInfo[2];
-		String email= peopleInfo[3];
-		String address = peopleInfo[4];
-		String Phone = peopleInfo[5];
-		List.add(new Users(Username, Password, Password, Password, Password, Password));
 	}
-	for(Users u: List){
-		System.out.println(u);
+	
+	br.close();
+
+	} catch (FileNotFoundException e) {
+		
+		e.printStackTrace();
 	}
+
+
+
 }
+
 }

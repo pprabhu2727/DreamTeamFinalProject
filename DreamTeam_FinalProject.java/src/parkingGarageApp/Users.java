@@ -78,7 +78,7 @@ public class Users{
 		return reservation;
 	}
 	public String toString(){
-		return "User Info: \n Name: " + getName() + "\n Email: " + getEmail() + "\n Address: " + getAddress() + "\n Phone:" + getPhone() +"\n"; 
+		return "User Info:"+"\n Username: " + getUsername() + "\n Password: " + getPassword() + "\n Name: " + getName() +  "\n Email: " + getEmail() + "\n Address: " + getAddress() + "\n Phone:" + getPhone() +"\n"; 
 	}
 	
 }
