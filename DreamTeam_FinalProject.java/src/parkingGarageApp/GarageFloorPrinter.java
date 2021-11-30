@@ -50,6 +50,7 @@ public class GarageFloorPrinter {
 		for (int i = 0; i < slotNumber.length; i++) {
 			slotNumber[i] = i+1;
 		}
+
 		
 		System.out.println("----------------------------------------");
 		System.out.print("[Garage " + garageNum + ", Floor " + floorNum +"]");
@@ -67,6 +68,9 @@ public class GarageFloorPrinter {
 				}
 				else {
 					System.out.print(map[i][j] + "  ");
+					if (map[i][j] == 'R') {
+						k++;
+					}
 				}
 			}
 			System.out.println();
