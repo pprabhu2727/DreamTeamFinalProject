@@ -19,7 +19,7 @@ public class GarageFloorPrinter {
 		int numSlotsAvailable = 0;
 		
 		// Floor to be printed
-		GarageFloor floor = CampusParking.getGarageList().get(garageNum).getFloorList().get(floorNum);
+		GarageFloor floor = CampusParking.getGarageList().get(garageNum).getFloorList().get(floorNum); 
 		
 		// Modifying map template with correct availability
 		for (int i = 0; i < 10; i++) {
