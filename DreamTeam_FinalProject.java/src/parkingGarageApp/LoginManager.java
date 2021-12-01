@@ -77,6 +77,7 @@ public class LoginManager {
 		    	   break;
 		      
 				case 2:
+					Reservation r = new Reservation();
 					Users user = new Users();
 					Vehicle v = new Vehicle();
 						System.out.print(" Enter Username: ");
@@ -134,6 +135,12 @@ public class LoginManager {
 						String Permit = s.nextLine();
 						v.setPermit(Permit);
 						printToFile(Permit);
+
+						System.out.print(" Do you have an existing Reservation? (yes or no): ");
+						String Reservation = s.nextLine();
+						r.setReservation(true);
+						r.setReser(Reservation);
+						printToFile(Reservation);
 
 					loggedInUser = user;
 					isLoggedIn = true;
@@ -221,7 +228,7 @@ public class LoginManager {
 			while(in.hasNextLine()) {
 				String userInfo = in.nextLine();
 				StringTokenizer stringTokenizer = new StringTokenizer(userInfo, ";");
-				
+				Boolean b = false;
 				while(stringTokenizer.hasMoreTokens()){
 					String Username = stringTokenizer.nextToken();
 					String Password = stringTokenizer.nextToken();
@@ -234,14 +241,21 @@ public class LoginManager {
 					String Year = stringTokenizer.nextToken();
 					String License = stringTokenizer.nextToken();
 					String Permit = stringTokenizer.nextToken();
-					
-
+					String Reservation =  stringTokenizer.nextToken();
+					if(Reservation.equalsIgnoreCase("no")){
+						b = false;
+					}
+					if(Reservation.equalsIgnoreCase("yes")){
+						b = true;
+					}
+					Reservation R = new Reservation(b);
 					Users vehicle = new Users();
 
 
 					Vehicle v = new Vehicle(Year,Make,Model, License, Permit);
 					vehicle.setVehicle(v);
-					listOfUsers.add(new Users(Name, email, address, Username, Password, Phone,v));	
+					listOfUsers.add(new Users(Name, email, address, Username, Password, Phone,v,R));
+
 					for(Users u: listOfUsers){
 						System.out.print(u);
 					}

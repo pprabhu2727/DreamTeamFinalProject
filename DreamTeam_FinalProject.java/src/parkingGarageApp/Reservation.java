@@ -14,15 +14,37 @@ public class Reservation {
 	static Scanner f = new Scanner(System.in);
 	static Scanner s = new Scanner(System.in);
 	private Users currentUser;
-	private Users getReservation;
+	//private Users getReservation;
 	private Users getName;
+	private boolean Reservation;
+	private String Reser;
 	private ParkingGarage getSlotNumber;
 	private ParkingGarage getGarageNumber;
 	private ParkingGarage getFloorNumber;
 	private ParkingSlot getAvaSlot;
 	int choice, gChoice, fChoice, sChoice;
 	Boolean reservation;
+			public Reservation(){
 
+			}
+			public Reservation(Boolean Reservation){
+			
+			
+					this.Reservation = Reservation;
+			}
+			public String getReser(){
+				return Reser;
+			}
+			public void setReser(String Reser){
+				this.Reser =  Reser;
+			}
+			public boolean getReservation(){
+				return Reservation;
+			}
+			public void setReservation(Boolean Reservation){
+				this.Reservation = Reservation;
+			}
+			
 			public Reservation(int garageNumber, int floorNumber, int slotNumber)
 			{
 				
@@ -99,5 +121,7 @@ public class Reservation {
 		
 		}while(choice == 4);
 	}
-
+	public String toString(){
+		retturn " "
+	}
 }

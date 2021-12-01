@@ -33,6 +33,17 @@ public class Users{
 		this.PhoneNumber = PhoneNumber;
 		this.vehicle = vehicle;
 	}
+	public Users(String name, String Email, String Address, String Username, String Password, String PhoneNumber,Vehicle vehicle, Reservation reservation ) {
+		this.name = name;
+		this.Email = Email;
+		this.Address = Address;
+		this.Username = Username;
+		this.Password = Password;
+		this.PhoneNumber = PhoneNumber;
+		this.vehicle = vehicle;
+		this.reservation = reservation;
+	}
+
 
 	public Users() {
 		
@@ -83,6 +94,7 @@ public class Users{
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
+	
 	
 	public Reservation getReservation() {
 		return reservation;

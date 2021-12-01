@@ -47,6 +47,7 @@ public class Main {
 			case 'r':
 				// TODO: add reservation functionality 
 				System.out.println("Reserving...");
+			
 				break;
 				
 			case 'D':
