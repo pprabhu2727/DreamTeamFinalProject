@@ -1,13 +1,13 @@
 package parkingGarageApp;
 
 public class Vehicle {
-	private int    year;
+	private String   year;
 	private String make;
 	private String model;
 	private String license;
 	private String permit;
 	
-	public Vehicle(int year, String make, String model, String license, String permit) {
+	public Vehicle(String year, String make, String model, String license, String permit) {
 		this.make = make;
 		this.model = model;
 		this.year = year;
@@ -17,7 +17,7 @@ public class Vehicle {
 	
 	public Vehicle() { }
 	
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 	
@@ -37,7 +37,7 @@ public class Vehicle {
 		this.permit = permit;
 	}
 	
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 	

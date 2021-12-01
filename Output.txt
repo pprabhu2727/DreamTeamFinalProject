@@ -1,2 +1,2 @@
-RThandi;Pass;Rayman Thandi;email@email.com;Address;916;
-Test;Test;test;test;test;test;
+
+RThandi;Password;Rayman Thandi;Email@Email.com;Address;(916)-XXX-XXXX;Honda;Accord;2018;XXXXXXX;XXXXXX;

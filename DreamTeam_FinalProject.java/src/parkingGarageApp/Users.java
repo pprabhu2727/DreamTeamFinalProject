@@ -21,6 +21,17 @@ public class Users{
 		this.Username = Username;
 		this.Password = Password;
 		this.PhoneNumber = PhoneNumber;
+	
+	}
+	
+	public Users(String name, String Email, String Address, String Username, String Password, String PhoneNumber,Vehicle vehicle ) {
+		this.name = name;
+		this.Email = Email;
+		this.Address = Address;
+		this.Username = Username;
+		this.Password = Password;
+		this.PhoneNumber = PhoneNumber;
+		this.vehicle = vehicle;
 	}
 
 	public Users() {
@@ -77,7 +88,7 @@ public class Users{
 		return reservation;
 	}
 	public String toString(){
-		return "User Info:"+"\n Username: " + getUsername() + "\n Password: " + getPassword() + "\n Name: " + getName() +  "\n Email: " + getEmail() + "\n Address: " + getAddress() + "\n Phone:" + getPhone() +"\n"; 
+		return "User Info:"+"\n Username: " + getUsername() + "\n Password: " + getPassword() + "\n Name: " + getName() +  "\n Email: " + getEmail() + "\n Address: " + getAddress() + "\n Phone:" + getPhone() + "\n Vehicle Info: " + getVehicle() + "\n"; 
 	}
 	
 }

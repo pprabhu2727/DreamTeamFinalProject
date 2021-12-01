@@ -1,12 +1,9 @@
 package parkingGarageApp;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -81,6 +78,7 @@ public class LoginManager {
 		      
 				case 2:
 					Users user = new Users();
+					Vehicle v = new Vehicle();
 						System.out.print(" Enter Username: ");
 						username = s.nextLine();
 						user.setUsername(username);
@@ -92,7 +90,7 @@ public class LoginManager {
 						user.setPassword(password);
 						printToFile(password);
 
-						System.out.print(" Enter Name ");
+						System.out.print(" Enter Name: ");
 						String Name = s.nextLine();
 						user.setEmail(Name);
 						printToFile(Name);
@@ -111,7 +109,32 @@ public class LoginManager {
 						String phone = s.nextLine();
 						user.setPhone(phone);
 						printToFile(phone);
-					
+
+						System.out.print(" Enter the make of your Vehicle : ");
+						String Make = s.nextLine();
+						v.setMake(Make);
+						printToFile(Make);
+
+						System.out.print(" Enter the Model of your Vehicle : ");
+						String Model = s.nextLine();
+						v.setModel(Model);
+						printToFile(Model);
+
+						System.out.print(" Enter the year of your Vehicle : ");
+						String Year = s.nextLine();
+						v.setYear(Year);
+						printToFile(Year);
+						
+						System.out.print(" Enter the license number of your Vehicle : ");
+						String License = s.nextLine();
+						v.setLicense(License);
+						printToFile(License);
+
+						System.out.print(" Enter the Permit number of your Vehicle : ");
+						String Permit = s.nextLine();
+						v.setPermit(Permit);
+						printToFile(Permit);
+
 					loggedInUser = user;
 					isLoggedIn = true;
 					break;
@@ -206,10 +229,24 @@ public class LoginManager {
 					String email= stringTokenizer.nextToken();
 					String address =stringTokenizer.nextToken();
 					String Phone = stringTokenizer.nextToken();
+					String Make = stringTokenizer.nextToken();
+					String Model = stringTokenizer.nextToken();
+					String Year = stringTokenizer.nextToken();
+					String License = stringTokenizer.nextToken();
+					String Permit = stringTokenizer.nextToken();
 					
-					
-					listOfUsers.add(new Users(Name, email, address, Username, Password, Phone));	
+
+					Users vehicle = new Users();
+
+
+					Vehicle v = new Vehicle(Year,Make,Model, License, Permit);
+					vehicle.setVehicle(v);
+					listOfUsers.add(new Users(Name, email, address, Username, Password, Phone,v));	
+					for(Users u: listOfUsers){
+						System.out.print(u);
+					}
 				}
+				
 				
 			}
 			
