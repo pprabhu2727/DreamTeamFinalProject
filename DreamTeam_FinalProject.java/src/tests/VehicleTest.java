@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class VehicleTest {
 
-	int    year;
+	String    year;
 	String make;
 	String model;
 	String license;
@@ -17,7 +17,7 @@ public class VehicleTest {
 	Vehicle v2;
 	
 	{
-		year = 1990;
+		year = "1990";
 		make = "Honda";
 		model = "Civic";
 		license = "6TRJ244";
