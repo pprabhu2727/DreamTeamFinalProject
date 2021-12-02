@@ -1,46 +1,43 @@
 package parkingGarageApp;
- import java.io.IOException;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
+	static final Scanner in = new Scanner(System.in);
+	static CampusParking parking = CampusParking.createInstance();
+	static Users currentUser = null;
+	
 	public static void main(String[] args) throws Exception {
-		// TODO: Initialization tasks 
-		CampusParking.createInstance();
-		Scanner in = new Scanner(System.in);
-		
-		// TODO: Login system
+		// Login
 		try {
 			LoginManager.login(in);
 		} catch (IOException e) {
 			System.out.println("Login error: " + e.getMessage());
 		}
 		
-		Users currentUser = LoginManager.getLoggedInUser();
+		currentUser = LoginManager.getLoggedInUser();
 		
-		// TODO: Menu (main program loop)
-		menu(currentUser, in);
-		
-		//in.close();
-		
+		// Menu (main program loop)
+		menu();
 	}
 	
 	/*
 	 * Main program loop
 	 */
-	private static void menu(Users currentUser, Scanner in) {
+	private static void menu() {
 		char userSelection;
 		boolean isQuit = false;
 		
 		do {
-			printMenu(currentUser);
+			printMenu();
 			userSelection = in.next().charAt(0);
 			 
 			switch(userSelection) {
 			case 'M': 
 			case 'm':
-				printMap(in);
+				printMap();
 				break;
 			
 			case 'R':
@@ -86,7 +83,7 @@ public class Main {
 	/*
 	 * Prints menu options
 	 */
-	private static void printMenu(Users currentUser) {
+	private static void printMenu() {
 		System.out.println("What would you like to do?");
 		System.out.println("  Enter M to view map");
 		System.out.println("  Enter R to make a reservation");
@@ -103,7 +100,7 @@ public class Main {
 	 * Asks for and prints the requested floor
 	 * For menu option M
 	 */
-	private static void printMap(Scanner in) {
+	private static void printMap() {
 		int garageNum = -1;	// No selection to begin with
 		int floorNum = -1;
 		boolean garageNumValid = false;
