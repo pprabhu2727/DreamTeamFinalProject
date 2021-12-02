@@ -13,7 +13,6 @@ public class LoginManager {
 
 	private static ArrayList<Users> listOfUsers = new ArrayList<Users>();
 	private static Users loggedInUser = null; // Used to hold the instance of a user who successfully logged in
-	private static Scanner s = new Scanner(System.in);
 	public static void login(Scanner in) throws Exception{
 		
 		String greeting = "Welcome. Please login or register to continue.";
@@ -33,8 +32,8 @@ public class LoginManager {
             System.out.println("  Enter 1 to Login");
             System.out.println("  Enter 2 to Register");
 			System.out.println("  Enter 3 to Show Account Information");
-            option = s.nextInt();
-            s.nextLine(); // clear buffer
+            option = in.nextInt();
+            in.nextLine(); // clear buffer
 			
 			switch(option){
 		       case 1:
@@ -42,13 +41,13 @@ public class LoginManager {
 			 
 			
 		        System.out.println("Please type your username :");
-		        username = s.next();   
+		        username = in.next();   
 		        System.out.println("Please type your password :");
-		        password = s.next();
+		        password = in.next();
 			
-				accountFileReader("Output.txt");		
+				readAccountsFrom("Output.txt");		
 				
-		     
+				// TODO: iterator
 		    	   for (Users user : listOfUsers)
 		    	   {
 		     
@@ -81,63 +80,63 @@ public class LoginManager {
 					Users user = new Users();
 					Vehicle v = new Vehicle();
 						System.out.print(" Enter Username: ");
-						username = s.nextLine();
+						username = in.nextLine();
 						user.setUsername(username);
 						printToFile("\n");
 						printToFile(username);
 			
 						System.out.print(" Enter Password: ");
-						password = s.nextLine();
+						password = in.nextLine();
 						user.setPassword(password);
 						printToFile(password);
 
 						System.out.print(" Enter Name: ");
-						String Name = s.nextLine();
+						String Name = in.nextLine();
 						user.setEmail(Name);
 						printToFile(Name);
 			
 						System.out.print(" Enter Email: ");
-						String email = s.nextLine();
+						String email = in.nextLine();
 						user.setEmail(email);
 						printToFile(email);
 			
 						System.out.print(" Enter Address: ");
-						String address = s.nextLine();
+						String address = in.nextLine();
 						user.setEmail(address);
 						printToFile(address);
 			
 						System.out.print(" Enter Phone Number: ");
-						String phone = s.nextLine();
+						String phone = in.nextLine();
 						user.setPhone(phone);
 						printToFile(phone);
 
 						System.out.print(" Enter the make of your Vehicle : ");
-						String Make = s.nextLine();
+						String Make = in.nextLine();
 						v.setMake(Make);
 						printToFile(Make);
 
 						System.out.print(" Enter the Model of your Vehicle : ");
-						String Model = s.nextLine();
+						String Model = in.nextLine();
 						v.setModel(Model);
 						printToFile(Model);
 
 						System.out.print(" Enter the year of your Vehicle : ");
-						String Year = s.nextLine();
+						String Year = in.nextLine();
 						v.setYear(Year);
 						printToFile(Year);
 						
 						System.out.print(" Enter the license number of your Vehicle : ");
-						String License = s.nextLine();
+						String License = in.nextLine();
 						v.setLicense(License);
 						printToFile(License);
 
 						System.out.print(" Enter the Permit number of your Vehicle : ");
-						String Permit = s.nextLine();
+						String Permit = in.nextLine();
 						v.setPermit(Permit);
 						printToFile(Permit);
 
 						System.out.print(" Do you have an existing Reservation? (yes or no): ");
-						String Reservation = s.nextLine();
+						String Reservation = in.nextLine();
 						r.setReservation(true);
 						r.setReser(Reservation);
 						printToFile(Reservation);
@@ -155,7 +154,7 @@ public class LoginManager {
 					break;
 				
 			}
-			s.nextLine();
+			
 		} while(!isLoggedIn);
 		
 	}
@@ -221,7 +220,7 @@ public class LoginManager {
 	 * Replaces Reader
 	 * Reads in all accounts from Output.txt to listOfUsers array
 	 */
-	public static void accountFileReader(String fileName) throws IOException {
+	private static void readAccountsFrom(String fileName) throws IOException {
 		try {
 			Scanner in = new Scanner(new File(fileName));
 			
@@ -242,23 +241,30 @@ public class LoginManager {
 					String License = stringTokenizer.nextToken();
 					String Permit = stringTokenizer.nextToken();
 					String Reservation =  stringTokenizer.nextToken();
-					if(Reservation.equalsIgnoreCase("no")){
-						b = false;
-					}
-					if(Reservation.equalsIgnoreCase("yes")){
-						b = true;
-					}
-					Reservation R = new Reservation(b);
-					Users vehicle = new Users();
-
-
+					
+					// If this user has a reservation, there will be more tokens to read
 					Vehicle v = new Vehicle(Year,Make,Model, License, Permit);
-					vehicle.setVehicle(v);
-					listOfUsers.add(new Users(Name, email, address, Username, Password, Phone,v,R));
+					Users user;
+					if(Reservation.equalsIgnoreCase("yes")){
+						String startTime = stringTokenizer.nextToken();
+						String endTime = stringTokenizer.nextToken();
+						String garageNum = stringTokenizer.nextToken();
+						String floorNum = stringTokenizer.nextToken();
+						String slotNum = stringTokenizer.nextToken();
+						
+						// TODO: Reservations.java needs this sort of constructor
+						Reservation R = new Reservation(startTime, endTime, garageNum, floorNum, slotNum); 
+						user = new Users(Name, email, address, Username, Password, Phone,v, R);
+					} else {
+						user = new Users(Name, email, address, Username, Password, Phone,v);
+					}
 
+					listOfUsers.add(user);
+					
+					/*
 					for(Users u: listOfUsers){
 						System.out.print(u);
-					}
+					} */
 				}
 				
 				
