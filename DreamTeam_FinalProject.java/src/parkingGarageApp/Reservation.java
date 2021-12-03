@@ -13,12 +13,12 @@ public class Reservation {
 	static Scanner g = new Scanner(System.in);
 	static Scanner f = new Scanner(System.in);
 	static Scanner s = new Scanner(System.in);
-	private Users users;
 	private ParkingGarage pg;
 	private ParkingSlot ps;
+	private Users user;
 	int choice, gChoice, fChoice, sChoice;
 	int garageNumber, floorNumber, slotNumber;
-	Boolean Reservation;
+	Boolean reservation;
 	public Reservation(){
 
 	}
@@ -39,39 +39,49 @@ public class Reservation {
 	}
 
 
-public makeReserv(int garageNumber, int floorNumber, int slotNumber){
+	public void makeReserv(int garageNumber, int floorNumber, int slotNumber){
 
-	System.out.println(" Please enter a garage number you'd like to reserve from: ");
-	gChoice = g.nextInt();
-	System.out.println(" Please enter a floor number you'd like to reserve from: ");
-	fChoice = f.nextInt();
-	System.out.println(" Please enter a slot number you'd like to reserve: ");
-	sChoice = s.nextInt();
-						
-	if(garageList.get(gChoice).getFloorList().get(fChoice).getSlots().get(sChoice).getAvailability == true){
-		ParkingSlot.changeAvailability;
-		ParkingSlot.setUser;
-		reservation = true;
-		garageNumber = gChoice;
-		floorNumber = fChoice;
-		slotNumber = sChoice;
+		System.out.println(" Please enter a garage number you'd like to reserve from: ");
+		gChoice = g.nextInt();
+		System.out.println(" Please enter a floor number you'd like to reserve from: ");
+		fChoice = f.nextInt();
+		System.out.println(" Please enter a slot number you'd like to reserve: ");
+		sChoice = s.nextInt();
+	
+		for(int i = 1; i <= CampusParking.getGarageList().size(); i++) {
+			if(gChoice == i) {
+				garageNumber = i;
+				for(int j = 1; j <= CampusParking.getGarageList().get(i).getNumberOfFloors(); j++) {
+					if(fChoice == j){
+						floorNumber = j;
+						for(int k = 0; k < CampusParking.SLOTS_PER_FLOOR; k++) {
+							if(sChoice == k && ps.getAvailability() == true) {
+								slotNumber = k;
+								ps.changeAvailability();
+								ps.setUser(user);
+								reservation = true;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+		public String toString(){
+			return "Your reservation has been set for Garage:" +garageNumber +" Floor:" +floorNumber +" and Slot number:" +slotNumber;
+		}
 	}
 
-	public String toString(){
-		return "Your reservation has been set for Garage:" +garageNumber +" Floor:" +floorNumber +" and Slot number:" +slotNumber;
-	}
-}		
-
-public quickReserv(){
+public void quickReserv(){
 	boolean foundSlot = false;
 	while(!foundSlot){
-	for(int i=1; i<=garageList.size(); i++) {
-		for(int j=1; j<=garageList.get(0).getNumberOfFloors();j++) {			
-			for(int k=0; k<numberOSlots; k++) {
-				boolean slotAvailability = garageList.get(i).getFloorList().get(j).getSlots().get(k+1).getAvailability();
+	for(int i=1; i<=CampusParking.getGarageList().size(); i++) {
+		for(int j=1; j<=CampusParking.getGarageList().get(0).getNumberOfFloors();j++) {			
+			for(int k=0; k< CampusParking.SLOTS_PER_FLOOR; k++) {
+				boolean slotAvailability = CampusParking.getGarageList().get(i-1).getFloorList().get(j-1).getSlots().get(k-1).getAvailability();
 					if (slotAvailability == true){
-						ParkingSlot.changeAvailability;
-						ParkingSlot.setUser;
+						ps.changeAvailability();
+						ps.setUser(user);
 						reservation = true;
 						garageNumber = i;
 						floorNumber = j;
@@ -86,3 +96,9 @@ public quickReserv(){
 		return "Your reservation has been set for Garage:" +garageNumber +" Floor:" +floorNumber +" and Slot number:" +slotNumber;
 	}
 }
+
+/*
+
+
+
+*/
