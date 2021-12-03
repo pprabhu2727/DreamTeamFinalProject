@@ -1,4 +1,5 @@
 package tests;
+import parkingGarageApp.Reservation;
 import parkingGarageApp.Users;
 import parkingGarageApp.Vehicle;
 
@@ -7,6 +8,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class UsersTest {
+	
+	String year = "2002";
+	String make = "toyota";
+	String model = "corolla";
+	String license = "*******";
+	String permit = "permit";
 
 	//get tests
 	@Test
@@ -51,20 +58,23 @@ public class UsersTest {
 		assertEquals("abc123", p.getPassword());
 	}
 	
-	/*
+	
 	@Test
 	public void getVehicletest() {
-		int year = 1990;
-		String make = "toyota";
-		String model = "corolla";
-		String license = "*******";
-		String permit = "permit";
-		
 		Vehicle p = new Vehicle(year, make, model, license, permit);
-		Users b = new Users("", "", "", "", "", "");
-		assertEquals("abc123", b.getVehicle());
+		Users b = new Users("", "", "", "", "", "", p);
+		assertEquals(p, b.getVehicle());
 	}
-	*/
+	
+	//this test should work when reservation class is done
+	@Test
+	public void getReservationtest() {
+		boolean b = true;
+		Vehicle p = new Vehicle(year, make, model, license, permit);
+		Reservation r = new Reservation(b);
+		Users a = new Users("", "", "", "", "", "", p, r);
+		assertEquals(p, a.getReservation());
+	}
 	
 	@Test
 	public void toStringtest() {
@@ -74,8 +84,9 @@ public class UsersTest {
 		String email = "vboyack@csus.edu";
 		String address = "6000 J Street, Sacramento, CA 95819";
 		String phone = "(916)278-6011";
-		String s = "User Info:"+"\n Username: " + username + "\n Password: " + password + "\n Name: " + name +  "\n Email: " + email + "\n Address: " + address + "\n Phone:" + phone +"\n";
-		Users p = new Users(name, email, address, username, password, phone);
+		Vehicle v = new Vehicle(year, make, model, license, permit);
+		String s = "User Info:"+"\n Username: " + username + "\n Password: " + password + "\n Name: " + name +  "\n Email: " + email + "\n Address: " + address + "\n Phone:" + phone +  "\n Vehicle Info: " + v +"\n";
+		Users p = new Users(name, email, address, username, password, phone, v);
 		assertEquals(s, p.toString());
 	}
 	
@@ -127,5 +138,24 @@ public class UsersTest {
 		Users p = new Users("", "", "", "", "", "");
 		p.setPassword(s);
 		assertEquals("abc123", p.getPassword());
+	}
+	
+	@Test
+	public void setVehicletest() {
+		Vehicle v = new Vehicle(year, make, model, license, permit);
+		Users p = new Users("", "", "", "", "", "", null);
+		p.setVehicle(v);
+		assertEquals(v, p.getVehicle());
+	}
+	
+	//this test should work when reservation class is done
+	@Test
+	public void setReservationtest() {
+		boolean b = true;
+		Vehicle p = new Vehicle(year, make, model, license, permit);
+		Reservation r = new Reservation(b);
+		Users a = new Users("", "", "", "", "", "", p, null);
+		a.setReservation(r);
+		assertEquals(p, a.getReservation());
 	}
 }

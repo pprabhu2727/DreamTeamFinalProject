@@ -18,7 +18,7 @@ public class Reservation {
 	private ParkingSlot ps;
 	int choice, gChoice, fChoice, sChoice;
 	int garageNumber, floorNumber, slotNumber;
-	Boolean reservation;
+	Boolean Reservation;
 	public Reservation(){
 
 	}
