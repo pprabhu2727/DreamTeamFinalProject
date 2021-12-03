@@ -246,14 +246,12 @@ public class LoginManager {
 					Vehicle v = new Vehicle(Year,Make,Model, License, Permit);
 					Users user;
 					if(Reservation.equalsIgnoreCase("yes")){
-						String startTime = stringTokenizer.nextToken();
-						String endTime = stringTokenizer.nextToken();
 						String garageNum = stringTokenizer.nextToken();
 						String floorNum = stringTokenizer.nextToken();
 						String slotNum = stringTokenizer.nextToken();
 						
 						// TODO: Reservations.java needs this sort of constructor
-						Reservation R = new Reservation(startTime, endTime, garageNum, floorNum, slotNum); 
+						Reservation R = new Reservation(Integer.parseInt(garageNum), Integer.parseInt(floorNum), Integer.parseInt(slotNum)); 
 						user = new Users(Name, email, address, Username, Password, Phone,v, R);
 					} else {
 						user = new Users(Name, email, address, Username, Password, Phone,v);

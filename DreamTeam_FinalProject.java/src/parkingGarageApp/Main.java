@@ -3,11 +3,14 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class Main {
 
 	static final Scanner in = new Scanner(System.in);
 	static CampusParking parking = CampusParking.createInstance();
 	static Users currentUser = null;
+	static Reservation r = new Reservation();
 	
 	public static void main(String[] args) throws Exception {
 		// Login
@@ -44,7 +47,9 @@ public class Main {
 			case 'r':
 				// TODO: add reservation functionality 
 				System.out.println("Reserving...");
-			
+				if(currentUser.getReservation() == null)
+				r.makeReserv(currentUser);
+				
 				break;
 				
 			case 'D':
@@ -55,6 +60,7 @@ public class Main {
 				} else {
 					// TODO: show reservation details
 					System.out.println("Showing reservation details...");
+					System.out.println(r);
 				}
 				break;
 			
