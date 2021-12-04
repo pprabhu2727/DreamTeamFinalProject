@@ -66,14 +66,15 @@ public class UsersTest {
 		assertEquals(p, b.getVehicle());
 	}
 	
-	//this test should work when reservation class is done
 	@Test
 	public void getReservationtest() {
-		boolean b = true;
+		int i = 0;
+		int j = 0;
+		int k = 0;
 		Vehicle p = new Vehicle(year, make, model, license, permit);
-		Reservation r = new Reservation(b);
+		Reservation r = new Reservation(i, j, k);
 		Users a = new Users("", "", "", "", "", "", p, r);
-		assertEquals(p, a.getReservation());
+		assertEquals(r, a.getReservation());
 	}
 	
 	@Test
@@ -148,14 +149,13 @@ public class UsersTest {
 		assertEquals(v, p.getVehicle());
 	}
 	
-	//this test should work when reservation class is done
 	@Test
 	public void setReservationtest() {
-		boolean b = true;
+
 		Vehicle p = new Vehicle(year, make, model, license, permit);
-		Reservation r = new Reservation(b);
+		Reservation r = new Reservation(0, 0, 0);
 		Users a = new Users("", "", "", "", "", "", p, null);
 		a.setReservation(r);
-		assertEquals(p, a.getReservation());
+		assertEquals(r, a.getReservation());
 	}
 }
