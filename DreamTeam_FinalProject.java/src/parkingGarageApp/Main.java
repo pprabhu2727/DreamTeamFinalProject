@@ -9,7 +9,7 @@ public class Main {
 
 	static final Scanner in = new Scanner(System.in);
 	static CampusParking parking = CampusParking.createInstance();
-	static Users currentUser = null;
+	public static Users currentUser = null;
 	static Reservation r = new Reservation();
 	
 	public static void main(String[] args) throws Exception {
@@ -29,7 +29,7 @@ public class Main {
 	/*
 	 * Main program loop
 	 */
-	private static void menu() {
+	public static void menu() {
 		char userSelection;
 		boolean isQuit = false;
 		
@@ -89,7 +89,7 @@ public class Main {
 	/*
 	 * Prints menu options
 	 */
-	private static void printMenu() {
+	public static void printMenu() {
 		System.out.println("What would you like to do?");
 		System.out.println("  Enter M to view map");
 		System.out.println("  Enter R to make a reservation");
@@ -106,7 +106,7 @@ public class Main {
 	 * Asks for and prints the requested floor
 	 * For menu option M
 	 */
-	private static void printMap() {
+	public static void printMap() {
 		int garageNum = -1;	// No selection to begin with
 		int floorNum = -1;
 		boolean garageNumValid = false;

@@ -12,17 +12,42 @@ import parkingGarageApp.GarageFloorPrinter;
 import org.junit.Test;
 
 public class MainTest {
-
+	
 	@Test
-	public void test() {
-		Main x = new Main();
+	public void testPrintMenuWithReservation() {
+		Main.currentUser = new Users();
+		Main.currentUser.setReservation(new Reservation());
+		Main.printMenu();
 	}
-
+	
+	// Have to manually enter each menu option from first to last.
+	// Before quitting, enter an option that doesn't exist to cover "default" case.
 	@Test
-	public void{
+	public void menuTest() {
+		Main.currentUser = new Users();
+		Main.currentUser.setReservation(new Reservation());
+		Main.menu();
 	}
+	
 	@Test
-	public void{
-
+	public void printMapTest() {
+		Main.printMap();
 	}
+	
+	/*
+	@Test
+	public void mainTest() {
+		String[] args = new String[0];
+		try {
+			Main.main(args);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	*/
+	
+	
+	
 }
