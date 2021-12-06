@@ -1,9 +1,5 @@
 package parkingGarageApp;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.*;
 
 
@@ -84,49 +80,8 @@ public class Reservation {
 		u.setReservation(res);
 	}
 
-public void quickReserv(Users u ){
-	boolean foundSlot = false;
-	while(!foundSlot){
-	for(int i=1; i<=CampusParking.getGarageList().size()-1; i++) {
-		for(int j=1; j<=CampusParking.getGarageList().get(0).getNumberOfFloors()-1;j++) {			
-			for(int k=0; k< CampusParking.SLOTS_PER_FLOOR-1; k++) {
-				boolean slotAvailability = CampusParking.getGarageList().get(i-1).getFloorList().get(j-1).getSlots().get(k-1).getAvailability();
-					if (slotAvailability == true){
-						ps.changeAvailability();
-						ps.setUser(user);
-						reservation = true;
-						garageNumber = i;
-						floorNumber = j;
-						slotNumber = k;
-						foundSlot = true;
-					}
-				}
-			}
-		  
-		}
-	}
-	Reservation res= new Reservation(garageNumber,floorNumber,slotNumber);
-		u.setReservation(res);
-}
-
-
 	public String toString(){
 		return "Your reservation has been set for Garage:" +garageNumber +" Floor:" +floorNumber +" and Slot number:" +slotNumber;
 	}
 }
 
-/*
-static void printToFile(String print) throws IOException {
-	File file = new File("Output.txt");
-	FileWriter f= new FileWriter( new File(file), true);
-	BufferedWriter b = new BufferedWriter(f);
-	PrintWriter p = new PrintWriter(b);
-	if(user.getUsername == )
-
-	
-	p.close();
-  
-
-
-
-*/
