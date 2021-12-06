@@ -14,6 +14,7 @@ public class UsersTest {
 	String model = "corolla";
 	String license = "*******";
 	String permit = "permit";
+	Users p2 = new Users();
 
 	//get tests
 	@Test
@@ -96,66 +97,56 @@ public class UsersTest {
 	@Test
 	public void setNametest() {
 		String s = "Randall Boggs";
-		Users p = new Users("", "", "", "", "", "");
-		p.setName(s);
-		assertEquals("Randall Boggs", p.getName());
+		p2.setName(s);
+		assertEquals("Randall Boggs", p2.getName());
 	}
 	
 	@Test
 	public void setEmailtest() {
 		String s = "vboyack@csus.edu";
-		Users p = new Users("", "", "", "", "", "");
-		p.setEmail(s);
-		assertEquals("vboyack@csus.edu", p.getEmail());
+		p2.setEmail(s);
+		assertEquals("vboyack@csus.edu", p2.getEmail());
 	}
 	
 	@Test
 	public void setAddresstest() {
 		String s = "6000 J Street, Sacramento, CA 95819";
-		Users p = new Users("", "", "", "", "", "");
-		p.setAddress(s);
-		assertEquals("6000 J Street, Sacramento, CA 95819", p.getAddress());
+		p2.setAddress(s);
+		assertEquals("6000 J Street, Sacramento, CA 95819", p2.getAddress());
 	}
 	
 	@Test
 	public void setUsernametest() {
 		String s = "vboyack";
-		Users p = new Users("", "", "", "", "", "");
-		p.setUsername(s);
-		assertEquals("vboyack", p.getUsername());
+		p2.setUsername(s);
+		assertEquals("vboyack", p2.getUsername());
 	}
 	
 	@Test
 	public void setPhonetest() {
 		String s = "(916)278-6011";
-		Users p = new Users("", "", "", "", "", "");
-		p.setPhone(s);
-		assertEquals("(916)278-6011", p.getPhone());
+		p2.setPhone(s);
+		assertEquals("(916)278-6011", p2.getPhone());
 	}
 	
 	@Test
 	public void setPasswordtest() {
 		String s = "abc123";
-		Users p = new Users("", "", "", "", "", "");
-		p.setPassword(s);
-		assertEquals("abc123", p.getPassword());
+		p2.setPassword(s);
+		assertEquals("abc123", p2.getPassword());
 	}
 	
 	@Test
 	public void setVehicletest() {
 		Vehicle v = new Vehicle(year, make, model, license, permit);
-		Users p = new Users("", "", "", "", "", "", null);
-		p.setVehicle(v);
-		assertEquals(v, p.getVehicle());
+		p2.setVehicle(v);
+		assertEquals(v, p2.getVehicle());
 	}
 	
 	@Test
 	public void setReservationtest() {
-
-		Vehicle p = new Vehicle(year, make, model, license, permit);
 		Reservation r = new Reservation(0, 0, 0);
-		Users a = new Users("", "", "", "", "", "", p, null);
-		a.setReservation(r);
-		assertEquals(r, a.getReservation());
+		p2.setReservation(r);
+		assertEquals(r, p2.getReservation());
 	}
 }
