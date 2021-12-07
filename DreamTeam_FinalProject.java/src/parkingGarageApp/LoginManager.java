@@ -11,35 +11,44 @@ import java.util.StringTokenizer;
 
 public class LoginManager {
 
-	private static ArrayList<Users> listOfUsers = new ArrayList<Users>();
-	private static Users loggedInUser = null; // Used to hold the instance of a user who successfully logged in
-	public static void login(Scanner in) throws Exception{
+	public static ArrayList<Users> listOfUsers = new ArrayList<Users>();
+	public static Users loggedInUser = null; // Used to hold the instance of a user who successfully logged in
+	
+	public static boolean login(Scanner in) {
 		
 		String greeting = "Welcome. Please login or register to continue.";
-        String username;
-        String password;
-        
-        
-      
-    
 	
 		System.out.println(greeting);
 		int option = -1;
 		boolean isLoggedIn = false;
-	
-		do{
-			
-            System.out.println("  Enter 1 to Login");
-            System.out.println("  Enter 2 to Register");
+		
+		do {
+			System.out.println("  Enter 1 to Login");
+	        System.out.println("  Enter 2 to Register");
 			System.out.println("  Enter 3 to Show Account Information");
-            option = in.nextInt();
-            in.nextLine(); // clear buffer
+	        option = in.nextInt();
+	        //in.nextLine(); // clear buffer
+			
+			try {
+				isLoggedIn = loginMenu(in, option);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} while (!isLoggedIn);
+		
+		return isLoggedIn;
+		
+	}
+	
+	public static boolean loginMenu(Scanner in, int option) throws Exception {
+			String username;
+	        String password;	
+			boolean isLoggedIn = false;
 			
 			switch(option){
 		       case 1:
-			 
-			 
-			
+
 		        System.out.println("Please type your username :");
 		        username = in.next();   
 		        System.out.println("Please type your password :");
@@ -76,6 +85,7 @@ public class LoginManager {
 		    	   break;
 		      
 				case 2:
+					in.nextLine(); //clear buffer
 					Reservation r = new Reservation();
 					Users user = new Users();
 					Vehicle v = new Vehicle();
@@ -134,12 +144,13 @@ public class LoginManager {
 						String Permit = in.nextLine();
 						v.setPermit(Permit);
 						printToFile(Permit);
-
+						/*
 						System.out.print(" Do you have an existing Reservation? (yes or no): ");
 						String Reservation = in.nextLine();
 						r.setReservation(true);
 						r.setReser(Reservation);
 						printToFile(Reservation);
+						*/
 
 					loggedInUser = user;
 					isLoggedIn = true;
@@ -154,10 +165,10 @@ public class LoginManager {
 					break;
 				
 			}
-			
-		} while(!isLoggedIn);
-		
+			return isLoggedIn;
 	}
+	
+	
 	
 	public static Users getLoggedInUser() {
 		return loggedInUser;
@@ -180,47 +191,12 @@ public class LoginManager {
 	  
 	
 	}
-
-	/* 
-	 * fileReader based on this method but replaces it
-	 * Using a scanner allows you to check for next lines in file
-	 */
-	/*
-	public static void Reader(String FileName) throws IOException{
-	
-		try {
-			BufferedReader br;
-			br = new BufferedReader(new FileReader(FileName));
-			String line = br.readLine();
-	
-			StringTokenizer stringTokenizer = new StringTokenizer(line,",");
-			while(stringTokenizer.hasMoreTokens()){
-				String Username = stringTokenizer.nextToken();
-				String Password = stringTokenizer.nextToken();
-				String Name = stringTokenizer.nextToken();
-				String email= stringTokenizer.nextToken();
-				String address =stringTokenizer.nextToken();
-				String Phone = stringTokenizer.nextToken();
-	
-			
-			listOfUsers.add(new Users(Name, email, address, Username, Password, Phone));	
-		}
-		
-		br.close();
-	
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-		}
-	
-	}
-	*/
 	
 	/*
 	 * Replaces Reader
 	 * Reads in all accounts from Output.txt to listOfUsers array
 	 */
-	private static void readAccountsFrom(String fileName) throws IOException {
+	public static void readAccountsFrom(String fileName) throws IOException {
 		try {
 			Scanner in = new Scanner(new File(fileName));
 			
@@ -240,11 +216,12 @@ public class LoginManager {
 					String Year = stringTokenizer.nextToken();
 					String License = stringTokenizer.nextToken();
 					String Permit = stringTokenizer.nextToken();
-					String Reservation =  stringTokenizer.nextToken();
+					//String Reservation =  stringTokenizer.nextToken();
 					
 					// If this user has a reservation, there will be more tokens to read
 					Vehicle v = new Vehicle(Year,Make,Model, License, Permit);
 					Users user;
+					/*
 					if(Reservation.equalsIgnoreCase("yes")){
 						String garageNum = stringTokenizer.nextToken();
 						String floorNum = stringTokenizer.nextToken();
@@ -256,7 +233,8 @@ public class LoginManager {
 					} else {
 						user = new Users(Name, email, address, Username, Password, Phone,v);
 					}
-
+					*/
+					user = new Users(Name, email, address, Username, Password, Phone,v);
 					listOfUsers.add(user);
 					
 					/*

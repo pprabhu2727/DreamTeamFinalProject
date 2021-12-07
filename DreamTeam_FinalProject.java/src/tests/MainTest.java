@@ -34,20 +34,4 @@ public class MainTest {
 		Main.printMap();
 	}
 	
-	/*
-	@Test
-	public void mainTest() {
-		String[] args = new String[0];
-		try {
-			Main.main(args);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	*/
-	
-	
-	
 }

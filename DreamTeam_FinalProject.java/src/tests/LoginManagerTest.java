@@ -15,21 +15,31 @@ import org.junit.Test;
 
 public class LoginManagerTest {
 
-
+	Scanner in = new Scanner(System.in);
+	
 	@Test
-    public void loginTest() throws Exception {
-		ArrayList<Users> listOfUsers = new ArrayList<Users>();
-		listOfUsers.add(new Users("String name", "String Email", "String Address", "String Username", "String Password", "String PhoneNumber",new Vehicle("String Year", "String Make", "String Model", "String License", "String Permit"),new Reservation(1,1,1)));
-		Users loggedInUser = null;
-    	String greeting = "Welcome. Please login or register to continue.";
-    	Scanner in = new Scanner(System.in);
-    	LoginManager.login(in);
-   
-    	
+    public void testLoginMenu() throws Exception {
+		// Inputs: username and password of a user already in Output.txt
+    	assertTrue(LoginManager.loginMenu(in, 1) == true);
+    	// Inputs: enter info for user registration
+    	assertTrue(LoginManager.loginMenu(in, 2) == true);
+    	assertTrue(LoginManager.loginMenu(in, 3) == false);
     }
+	
+	@Test
+	public void testLogin() {
+		assertTrue(LoginManager.login(in) == true);
+	}
+	
+	@Test
+	public void getLoggedInUserTest() {
+		Users loggedInUser = LoginManager.getLoggedInUser();
+		assertEquals(loggedInUser, LoginManager.getLoggedInUser());
+	}
+	
 	@Test
     public void readAccountTest() throws Exception {
-		File f = new File("Output.txt");
+		//File f = new File("Output.txt");
 		LoginManager.readAccountsFrom("Output.txt");
     	
     }

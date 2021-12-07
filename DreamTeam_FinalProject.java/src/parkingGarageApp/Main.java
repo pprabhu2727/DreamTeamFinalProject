@@ -13,12 +13,7 @@ public class Main {
 	static Reservation r = new Reservation();
 	
 	public static void main(String[] args) throws Exception {
-		// Login
-		try {
-			LoginManager.login(in);
-		} catch (IOException e) {
-			System.out.println("Login error: " + e.getMessage());
-		}
+		LoginManager.login(in);
 		
 		currentUser = LoginManager.getLoggedInUser();
 		
