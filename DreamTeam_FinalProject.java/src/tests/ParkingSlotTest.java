@@ -6,8 +6,6 @@ import parkingGarageApp.Users;
 
 import org.junit.Test;
 
-import old.Permit;
-
 public class ParkingSlotTest {
 
 	@Test
